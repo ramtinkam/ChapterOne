@@ -1,0 +1,112 @@
+.forgot-pass {
+    display: block;
+    text-align: right;
+    font-family: IRANSansX;
+    align-items: flex-start;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 26px;
+    margin-right: 0;
+    width: 171%;
+
+}
+
+.form-header{
+    display: block;
+    color: #000;
+    font-size: 24px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: right;
+    margin-right: 0;
+    width: 172%;
+    margin-bottom: 32px;
+    margin-top: 0px;
+}
+
+input {
+    display: block;
+    height: 2rem;
+    width: 160%;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    text-align: right;
+    font-size: 15px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    
+}
+
+input:focus {
+    border: none;
+}
+
+.main-login {
+    min-height: 90vh;
+    min-width: 90vw;
+    overflow-x: hidden;
+    display: flex;
+}
+
+
+.right-side {
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 300px;
+    margin-left: 100px;
+    padding-top: 30px
+    
+}
+
+.login-container{
+    width: 50%;
+    height: 600px;
+    border-radius: 1rem;
+    margin: 0;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#sub-but {
+    width: 175%;
+    height: 3.5rem;
+    background: var(--151618, #151618);
+    color: var(--ffffff, #FFF);
+    border: none;
+    cursor: pointer;
+    padding: 1.2rem 4rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    font-size: 20px;
+    font-family: IRANSansX;
+
+
+}
+
+#sub-but:hover {
+    background: var(--151618, #25272c);
+}
+
+
+.unknown-img {
+    width: 800px;
+    height: 100%;
+}
+
+
