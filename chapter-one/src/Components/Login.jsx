@@ -21,6 +21,7 @@ function Login() {
               onChange={(e)=>{setpassval(e.target.value)}} id='pass1' />
               <p className="forgot-pass">رمز عبور خود را فراموش کرده‌اید؟ <a href='#'>فراموشی رمز عبور</a></p>
               <button type='submit' id='sub-but'>ورود</button>
+              <a href='/signup'>ثبت نام</a>
           </form>
         </div>
         

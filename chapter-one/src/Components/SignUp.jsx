@@ -42,8 +42,7 @@ const SignUp = () => {
                 value={password} type="text"/>
                 <label className='signUp-label'>تمامی شرایط و قوانین را می‌پذیرم<input type="checkbox" className='singUpCheckbox'/></label>
                 <input className='submit-button' type="submit" value="ثبت نام" />
-                
-                
+
             </form>
         </div>
     )
