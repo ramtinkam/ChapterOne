@@ -1,0 +1,96 @@
+
+.main-searchbox {
+    
+    display: flex;
+    width: 1307px;
+    height: 574px;
+    padding: 0px 108px 61px 108px;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbox-img {
+    position: relative;
+    width: 1250px;
+    height: 550px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    object-fit: cover;
+    border-radius: 45px;
+    
+}
+
+.search-header {
+    position: absolute;
+    color: #FFF;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    text-align: center;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; 
+    padding-bottom: 200px;
+    width: 900px;
+}
+
+.search-text {
+    position: absolute;
+    display: flex;
+    width: 770px;
+    flex-direction: column;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-top: 50px;
+}
+
+.line {
+    position: absolute;
+    width: 316px;
+    height: 32.492px;
+    flex-shrink: 0;
+    background: #AEDFF8;
+    margin-bottom: 180px;
+    margin-left: 345px;
+}
+
+.searchbar {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    margin-top: 320px;
+}
+
+.search-input {
+    border-radius: 10px;
+    background: #FFF; 
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.10);
+    border-style: solid;
+    font-size: 13px;
+}
+
+.btn-search{
+    position: absolute;
+    background-color: #AEDFF8;
+    border: 0;
+    border-radius: 7px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 288px;
+    margin-right: 433px;
+    color: rgb(255, 255, 255);
+}
+
+.btn-search:hover{
+    background: #d8eef9;
+    
+}

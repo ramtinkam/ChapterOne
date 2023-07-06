@@ -26,7 +26,7 @@ function Login() {
         
      
       <div className='right-side'>
-        <img className='unknown-img' src={image} alt="BigCo Inc. logo"/>
+        <img className='unknown-img' src={image} alt=""/>
       </div>
     </div>
     
