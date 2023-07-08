@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Landing.css'
 import Searchbox from './Searchbox';
+import Category from './Category';
 
 
 
@@ -33,6 +34,9 @@ const Landing = () => {
             </div>
             <div className='search-box'>
                 <Searchbox/>
+            </div>
+            <div className="category-main">
+                <Category />
             </div>
         </div>
     )
