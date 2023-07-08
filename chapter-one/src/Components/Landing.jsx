@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Landing.css'
 import Searchbox from './Searchbox';
 import Category from './Category';
+import SocialProof from './SocialProof';
+import Footer from './Footer';
 
 
 
@@ -37,6 +39,12 @@ const Landing = () => {
             </div>
             <div className="category-main">
                 <Category />
+            </div>
+            <div className='social-proof'>
+                <SocialProof/>
+            </div>
+            <div className='footer'>
+                <Footer/>
             </div>
         </div>
     )

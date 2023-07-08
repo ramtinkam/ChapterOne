@@ -26,7 +26,7 @@
     margin-top: 0px;
 }
 
-input {
+.email-input {
     display: block;
     height: 2rem;
     width: 160%;
@@ -42,7 +42,27 @@ input {
     
 }
 
-input:focus {
+.email-input:focus {
+    border: none;
+}
+
+.password-input {
+    display: block;
+    height: 2rem;
+    width: 160%;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    text-align: right;
+    font-size: 15px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    
+}
+
+.password-input:focus {
     border: none;
 }
 

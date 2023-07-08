@@ -14,8 +14,7 @@
 
 .main-category {
     display: flex;
-    width: 1420px;
-    height: 398px;
+    height: 198px;
     flex-shrink: 0;
     margin: 0 50px;
     margin-left: 102px;
