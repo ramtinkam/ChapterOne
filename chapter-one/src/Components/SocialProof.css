@@ -1,0 +1,73 @@
+.social-proof-container{
+    align-items: center;
+    justify-content: space-around;
+    height: 300px;
+    display: flex;
+    flex-shrink: 0;
+    background: linear-gradient(134deg, #489FCB 0%, #AEDFF8 100%);
+    margin-bottom: 38px;
+}
+.left-cloud{
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+}
+.right-cloud{
+    width: 190px;
+    height: 190px;
+    flex-shrink: 0;
+}
+.quote-container{
+    display: flex;
+    text-align: right;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 216.75px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+}
+.qoute-name-and-image{
+    display: flex;
+    margin-right: 40px;
+    align-items: center;
+}
+.quote-name{
+    color: #000;
+    font-family: Estedad;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+.qoute-image{
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 36px;
+    margin-left:20px
+}
+
+.qoute-text-container{
+    display: flex;
+    margin-inline: 50px;
+    color: #000;
+    text-align: right;
+    font-family: Estedad;
+    font-size: 12.5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.social-proof-title{
+    color: #FFF;
+    text-align: right;
+    font-family: Estedad;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
