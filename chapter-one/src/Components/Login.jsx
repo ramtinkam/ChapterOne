@@ -41,7 +41,7 @@ function Login() {
             onChange={(e)=>{setpassval(e.target.value)}} />
 
               <p className="forgot-pass">رمز عبور خود را فراموش کرده‌اید؟ 
-              <a className='forgot-link' href='#'>فراموشی رمز عبور</a>
+              <a className='forgot-link' href='/forgot-password'>فراموشی رمز عبور</a>
               </p>
               
 

@@ -1,10 +1,10 @@
 
 .main-login {
     display: flex;
-    height: 715px;
-    width: 1520px;
+    overflow: hidden;
+    height: 100vh;
     justify-content: center;
-    align-items: center;
+
 }
 
 .login-div {
@@ -19,7 +19,7 @@
 .login-img {
     position: relative;
     width: 850px;
-    height: 732px;
+    height: 100vh;
     padding-left: 687px;
 }
 

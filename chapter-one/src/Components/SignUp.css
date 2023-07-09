@@ -1,10 +1,10 @@
 
 .main-signup {
+    overflow: hidden;
     display: flex;
-    height: 715px;
-    width: 1520px;
+    height: 100vh;
+    width: 100vw;
     justify-content: center;
-    align-items: center;
 }
 
 .form-container{
@@ -18,7 +18,7 @@
 .signup-img {
     position: relative;
     width: 1537px;
-    height: 732px;
+    height: 100vh;
 }
 
 .signup-back-but {
@@ -95,10 +95,9 @@
     font-weight: 200;
     line-height: 26px;
     margin-bottom: 20px;
-
+    justify-content: center;
     margin-left: 220px;
 
-    justify-content: right;
 }
 .singUpCheckbox{
     display: flex;
