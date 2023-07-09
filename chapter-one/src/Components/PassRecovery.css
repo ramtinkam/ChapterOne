@@ -1,0 +1,93 @@
+
+.main-recovery {
+    display: flex;
+    height: 715px;
+    width: 1520px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pass-recover {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #489FCB
+}
+
+.pass-recovery-img {
+    position: relative;
+    width: 680px;
+    padding-left: 872px;
+    height: 747px;
+}
+
+.pass-recovery-back-but {
+    display: flex;
+    position: absolute;
+    border-radius: 80cm;
+    background-color: #489FCB;
+    border: none;
+    padding: 0;
+    margin-bottom: 600px;
+    margin-right: 1400px;
+}
+
+.pass-recovery-back-but:hover {
+    background-color: #92c6e0;
+}
+
+.pass-recover-form {
+    display: block;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding-right: 290px;
+}
+
+.pass-recovery-header {
+    display: flex;
+    justify-content: right;
+    padding-right: 400px;
+    padding-bottom: 40px;
+    color: #000;
+    font-family: IRANSansX;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.pass-recovery-input {
+    display: flex;
+    height: 2rem;
+    width: 350px;
+    margin-bottom: 2.5rem;
+    margin-right: 390px;
+    padding: 0.2rem 1rem;
+    text-align: right;
+    font-size: 15px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #bf5521;
+}
+
+.pass-recovery-but {
+    display: flex;
+    width: 383px;
+    justify-content: center;
+    align-items: center;
+    height: 3.2rem;
+    background: #F39F74;
+    color: var(--ffffff, #FFF);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 20px;
+    font-family: IRANSansX;
+}
