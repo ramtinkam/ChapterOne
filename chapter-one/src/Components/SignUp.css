@@ -38,7 +38,9 @@
 
 .form-body{
     display: flex;
+
     position: absolute;
+
     flex-direction: column;
     width: 600px;
     height:fit-content;
@@ -83,6 +85,7 @@
 }
 
 .signUp-label{
+    width: 60%;
     display: flex;
     color: #000;
     text-align: right;
@@ -92,7 +95,9 @@
     font-weight: 200;
     line-height: 26px;
     margin-bottom: 20px;
+
     margin-left: 220px;
+
     justify-content: right;
 }
 .singUpCheckbox{

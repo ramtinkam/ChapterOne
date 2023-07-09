@@ -62,6 +62,8 @@
 
 .login-input {
     display: flex;
+
+
     height: 2rem;
     width: 350px;
     margin-bottom: 2rem;
@@ -78,6 +80,7 @@
 }
 
 .login-input:focus {
+
     border: none;
 }
 

@@ -21,6 +21,7 @@ function Login() {
 
   return (
     <div className='main-login'>
+
         <div className='login-div'>
           <img className='login-img' src={loginimage} alt="login-image"/>
           <button className='login-back-but' onClick={handleBackClick}>
@@ -43,6 +44,7 @@ function Login() {
               <a className='forgot-link' href='#'>فراموشی رمز عبور</a>
               </p>
               
+
               <button type='submit' id='sub-but'>ورود</button>
               
               
