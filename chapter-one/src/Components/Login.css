@@ -1,132 +1,168 @@
-.forgot-pass {
+
+.main-login {
+    display: flex;
+    height: 715px;
+    width: 1520px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #489FCB;
+    
+}
+
+.login-img {
+    position: relative;
+    width: 850px;
+    height: 732px;
+    padding-left: 687px;
+}
+
+.login-back-but {
+    display: flex;
+    position: absolute;
+    border-radius: 80cm;
+    background-color: #489FCB;
+    border: none;
+    padding: 0;
+    margin-bottom: 600px;
+    margin-right: 1400px;
+}
+
+.login-back-but:hover {
+    background-color: #92c6e0;
+}
+
+.login-form {
     display: block;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding-right: 400px;
+}
+
+.login-header {
+    display: flex;
+    justify-content: right;
+    padding-right: 400px;
+    padding-bottom: 30px;
+    color: #000;
+    font-family: IRANSansX;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.login-input {
+    display: flex;
+
+
+    height: 2rem;
+    width: 350px;
+    margin-bottom: 2rem;
+    margin-right: 390px;
+    padding: 0.2rem 1rem;
+    text-align: right;
+    font-size: 15px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #bf5521;
+    
+}
+
+.login-input:focus {
+
+    border: none;
+}
+
+.forgot-pass {
+    display: inline;
     text-align: right;
     font-family: IRANSansX;
-    align-items: flex-start;
+    align-items: center;
     font-size: 14px;
     font-weight: 300;
     line-height: 26px;
     margin-right: 0;
     width: 171%;
-
+    opacity: 80%;
 }
 
-.form-header{
-    display: block;
-    color: #000;
-    font-size: 24px;
-    font-family: IRANSansX;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-align: right;
-    margin-right: 0;
-    width: 172%;
-    margin-bottom: 32px;
-    margin-top: 0px;
+.forgot-link {
+    padding-right: 55px;
+    padding-left: 30px;
+    text-decoration: none;
+    color: #41444B;
 }
 
-.email-input {
-    display: block;
-    height: 2rem;
-    width: 160%;
-    margin: auto;
-    margin-bottom: 2rem;
-    padding: 0.2rem 1rem;
-    text-align: right;
-    font-size: 15px;
-    font-family: IRANSansX;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    
+.forgot-link:hover{
+    color: #F39F74;
 }
 
-.email-input:focus {
-    border: none;
-}
-
-.password-input {
-    display: block;
-    height: 2rem;
-    width: 160%;
-    margin: auto;
-    margin-bottom: 2rem;
-    padding: 0.2rem 1rem;
-    text-align: right;
-    font-size: 15px;
-    font-family: IRANSansX;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    
-}
-
-.password-input:focus {
-    border: none;
-}
-
-.main-login {
-    min-height: 90vh;
-    min-width: 90vw;
-    overflow-x: hidden;
-    display: flex;
-}
-
-
-.right-side {
-    display: flex;
-    padding-top: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.left-side {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 300px;
-    margin-left: 100px;
-    padding-top: 30px
-    
-}
-
-.login-container{
-    width: 50%;
-    height: 600px;
-    border-radius: 1rem;
-    margin: 0;
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-
-}
 
 #sub-but {
-    width: 175%;
-    height: 3.5rem;
-    background: var(--151618, #151618);
+    display: flex;
+    width: 383px;
+    justify-content: center;
+    align-items: center;
+    height: 3.2rem;
+    background: #F39F74;
     color: var(--ffffff, #FFF);
     border: none;
     cursor: pointer;
-    padding: 1.2rem 4rem;
     border-radius: 4px;
-    margin-top: 1.5rem;
+    margin-top: 40px;
+    margin-bottom: 60px;
     font-size: 20px;
     font-family: IRANSansX;
-
-
 }
 
 #sub-but:hover {
-    background: var(--151618, #25272c);
+    background-color: #f6b392;
 }
 
-
-.unknown-img {
-    width: 800px;
-    height: 100%;
+.login-linebreak {
+    position: absolute;
+    display: flex;
+    width: 400px;
+    color: #F39F74;
+    margin-top: 440px;
+    margin-right: 800px;
+    margin-bottom: 75px;
 }
 
+.login-signup-route {
+    position: absolute;
+    display: inline-block;
+}
 
+.login-signup-but {
+    position: absolute;
+    display: flex;
+    width: 383px;
+    justify-content: center;
+    align-items: center;
+    height: 3.2rem;
+    background: #F39F74;
+    color: var(--ffffff, #FFF);
+    border: none;
+    font-size: 20px;
+    font-family: IRANSansX;
+    border-radius: 4px;
+    margin-top: 560px;
+    margin-right: 789px;
+    margin-bottom: 60px;
+}
+
+.login-signup-but:hover {
+    background-color: #f6b392;
+}
