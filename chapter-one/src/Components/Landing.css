@@ -16,6 +16,7 @@
     width: 36px;
     height: 36px;
     padding: 6px;
+    margin-left: 5px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;

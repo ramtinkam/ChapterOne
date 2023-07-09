@@ -5,6 +5,7 @@ import Landing from './Components/Landing';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import Searchbox from './Components/Searchbox';
+import { ForgotPassword } from './Components/ForgotPassword';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path ="/" element={<Landing/>}></Route>
       <Route path ="login" element={<Login/>}></Route>
       <Route path ="signup" element={<SignUp/>}></Route>
+      <Route path ="forgot-password" element={<ForgotPassword/>}></Route>
       </Routes>
 
     </div>
