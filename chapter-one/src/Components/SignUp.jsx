@@ -6,6 +6,7 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [checkbox, setCheckbox] = useState(false);
     
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -16,15 +17,18 @@ const SignUp = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value);
     };
-    /*const handleSubmit = (e) => {
+    const handleCheckbox = (e) => {
+        setCheckbox(e.target.value);
+    };
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if (name === '' || email === '' || password === '') {
-            setError(true);
-        } else {
+        if (username === '' || email === '' || password === '' || checkbox === false) {
+            alert("error try again");}
+        /* else {
             setSubmitted(true);
             setError(false);
-        }
-    };*/
+        }*/
+    };
 
 
 
@@ -48,9 +52,9 @@ const SignUp = () => {
                 value={password} type="text"/>
                 <label className='signUp-label'>
                     تمامی شرایط و قوانین را می‌پذیرم
-                    <input type="checkbox" className='singUpCheckbox' />
+                    <input type="checkbox" className='singUpCheckbox' onChange={handleCheckbox} value={checkbox} />
                 </label>
-                <input className='submit-button' type="submit" value="ثبت نام" />
+                <input className='submit-button' type="submit" value="ثبت نام" onClick={handleSubmit} />
 
                 <p className="signup-login-route">آیا قبلا ثبت نام کرده‌اید؟
                     <a className='signup-to-login-link' href='/login'>ورود</a>
