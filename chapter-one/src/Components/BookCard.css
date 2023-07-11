@@ -1,0 +1,99 @@
+
+.book-card {
+    display: flex;
+    width: 260px;
+    height: 300px;
+    margin: 15px 20px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 1px 16px 0px rgba(0, 0, 0, 0.10);
+    
+}
+
+.book-card-rate-box {
+    display: block;
+    width: 18px;
+    margin-left: 13px;
+    margin-top: 30px;
+}
+
+.book-card-top {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    width: 260px;
+    height: 285px;
+    padding-top: 15px;
+    position: absolute;
+}
+
+.book-card-sample-img {
+    width: 230px;
+    height: 173px;
+}
+
+.book-card-bottom {
+    display: flex;
+    justify-content: right;
+    width: 200px;
+    height: 25px;
+    margin-top: 205px;
+    text-align: right;
+}
+
+.book-card-name-div {
+    display: flex;
+    text-align: right;
+    height: min-content;
+    justify-content: right;
+}
+
+.book-card-name {
+    display: flex;
+    position: absolute;
+    height: min-content;
+    color: #000;
+    font-family: Estedad;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    text-align: right;
+}
+
+.book-card-author {
+    color: #000;
+    text-align: right;
+    font-family: Estedad;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 30px;
+}
+
+.book-card-button {
+    display: flex;
+    position: absolute;
+}
+
+.book-card-add-library {
+    display: block;
+    width: 260px;
+    height: 40px;
+    border-width: 0;
+    margin-top: 260px;
+    background: #F39F74;
+    border-radius: 7px;
+    color: #F5F5F5;
+    text-align: center;
+    font-family: Estedad;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.book-card-add-library:hover {
+    background-color: #f6b392;
+}
