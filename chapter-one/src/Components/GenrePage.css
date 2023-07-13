@@ -1,0 +1,138 @@
+
+.main-genre-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.genre-category-div {
+    display: flex;
+    margin-top: 70px;
+}
+
+.genre-searchbox-div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 110px;
+}
+
+.genre-searchbox {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+}
+
+.genre-searchbox-input {
+    display: block;
+    height: 2rem;
+    width: 500px;
+    text-align: right;
+    font-size: 15px;
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    border-radius: 10px;
+    background: #FFF; 
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.10);
+    border-style: solid;
+    font-size: 13px;
+
+}
+
+.genre-btn-search {
+    position: absolute;
+    background-color: #AEDFF8;
+    border: 0;
+    border-radius: 7px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-right: 434px;
+    margin-top: 4px;
+}
+
+.genre-btn-search:hover {
+    background: #d8eef9;
+}
+
+.genre-sortby-div {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background-color: #AEDFF8;
+    width: 300px;
+    height: 50px;
+    justify-content: right;
+    border-radius: 10px;
+    margin-left: 195px;
+    width: 1150px;
+}
+
+.genre-sortby-header {
+    color: #000;
+    text-align: right;
+    font-family: Estedad;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 30px;
+}
+
+.genre-sortby-name {
+    display: flex;
+    text-decoration: none;
+    color: #000;
+    text-align: right;
+    font-family: Estedad;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 200px;
+}
+
+.genre-sortby-name:hover {
+    color: #F39F74;
+}
+
+.genre-bookcard {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding-top: 100px;
+}
+
+.genre-page-navigation {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.genre-pages, .genre-page-back-text, .genre-page-forward-text{
+    text-decoration: none;
+    font-family: Estedad;
+    font-size: 10px;
+    padding: 0 10px;
+    color: #000;
+}
+
+.genre-pages:hover, .genre-page-back-text:hover, .genre-page-forward-text:hover{
+    color: #F39F74;
+}
+
+.genre-page-back-text {
+    margin-right: 20px;
+}
+
+.genre-page-forward-text {
+    margin-left: 20px;
+}
