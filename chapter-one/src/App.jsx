@@ -9,10 +9,13 @@ import { ForgotPassword } from './Components/ForgotPassword';
 import PassRecovery from './Components/PassRecovery';
 import Author from './Components/Author';
 import BookCard from './Components/BookCard';
+import GenrePage from './Components/GenrePage';
 
 function App() {
   return (
     <div className="App">
+
+      {/* <GenrePage /> */}
 
       {/* <Author /> */}
       <Routes>
@@ -22,6 +25,7 @@ function App() {
       <Route path ="forgot-password" element={<ForgotPassword/>}></Route>
       <Route path ="pass-recovery" element={<PassRecovery/>}></Route>
       <Route path ="author-page" element={<Author/>}></Route>
+      <Route path ="genre-page" element={<GenrePage/>}></Route>
       </Routes>
 
     </div>

@@ -21,7 +21,7 @@ function Navbar() {
                 <div className='nav-buttons-container'>
                     <a href='#' className='nav-button'>درباره ما</a>
                     <a href='#' className='nav-button'>گروه ها</a>
-                    <a href='#' className='nav-button'>فروشگاه</a>
+                    {/* <a href='#' className='nav-button'>فروشگاه</a> */}
                     <a href='/' className='nav-button'>صفحه اصلی</a>                   
                 </div>
                 <div className='logo-container'>
