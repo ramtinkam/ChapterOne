@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
 import './Login.css';
 import loginimage from './login-image.png';
+import Axios from "axios";
 
 function Login() {
 
-    const [emailval, setemailval] = useState("");
-    const [passval, setpassval] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        try{      
+        if (email === '' || password === '') {
+          console.log('error');
+        }
+        else {
+         Axios.post("http://127.0.0.1:8000/api/user/signin/",{ email: email, password:password }).then(
+          (response) => {
+          const token = response.data.data;
+          sessionStorage.setItem('token',token.slice(6));
+          window.location.href = "/"
+        })
+        }
+        }
+        catch(err){
+          console.log(err);
+        }
+  };
+    
 
     function handleBackClick() {
       window.location.href = '/';
@@ -34,11 +52,11 @@ function Login() {
 
             <h className='login-header'>خوش آمدید</h>
 
-            <input className='login-input' placeholder='ایمیل' type='email' value={emailval} 
-            onChange={(e)=>{setemailval(e.target.value)}} />
+            <input className='login-input' placeholder='ایمیل' type='email' value={email} 
+            onChange={(e)=>{setEmail(e.target.value)}} />
 
-            <input className='login-input' placeholder='رمز عبور' type='password' value={passval}
-            onChange={(e)=>{setpassval(e.target.value)}} />
+            <input className='login-input' placeholder='رمز عبور' type='password' value={password}
+            onChange={(e)=>{setPassword(e.target.value)}} />
 
               <p className="forgot-pass">رمز عبور خود را فراموش کرده‌اید؟ 
               <a className='forgot-link' href='/forgot-password'>فراموشی رمز عبور</a>

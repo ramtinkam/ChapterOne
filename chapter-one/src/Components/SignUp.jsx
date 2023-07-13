@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import './SignUp.css';
 import signupimage from './signup-img.jpg';
+import Axios from "axios";
+
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -23,11 +25,15 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === '' || email === '' || password === '' || checkbox === false) {
-            alert("error try again");}
-        /* else {
-            setSubmitted(true);
-            setError(false);
-        }*/
+            console.log("error");}
+        else {
+           Axios.post("http://127.0.0.1:8000/api/user/signup/",{ email: email, fullname:username, password:password }).then(
+            (response) => {
+            const token = response.data.data;
+            sessionStorage.setItem('token',token.slice(6));
+            window.location.href = "/"
+          });
+        }
     };
 
 

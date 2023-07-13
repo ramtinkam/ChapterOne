@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PassRecovery.css';
 import PassRecoveryimage from './password-recovery.jpg';
+import Axios from "axios";
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-};
 
-function handleBackClick() {
-    window.location.href = '/';
-}
+
 
 function PassRecovery() {
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (password != confirmPassword || password === '' || confirmPassword === ''){
+            console.log('error');
+        }
+        else{
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+              });
+            const token = params.token; 
+            Axios.post("http://127.0.0.1:8000/api/password-reset/confirm/",{ password:password,token:token }).then(
+            (response) => {
+                console.log(response);
+            window.location.href = "/login"
+        })
+        }
+    };
+    
+    function handleBackClick() {
+        window.location.href = '/';
+    }
+
+
+
   return (
     <div className="main-recovery">
         <div className="pass-recover">
@@ -25,8 +49,10 @@ function PassRecovery() {
             <form onSubmit={handleSubmit} className="pass-recover-form">
                 <h className='pass-recovery-header'>بازیابی کلمه عبور </h>
 
-                <input className="pass-recovery-input" type="password" placeholder='کلمه عبور جدید'/>
-                <input className="pass-recovery-input" type="password" placeholder=' تایید کلمه عبور جدید'/>
+                <input className="pass-recovery-input" type="password" value={password}
+                onChange={(e)=>{setPassword(e.target.value)}} placeholder='کلمه عبور جدید'/>
+                <input className="pass-recovery-input" type="password" value={confirmPassword}
+                onChange={(e)=>{setConfirmPassword(e.target.value)}} placeholder=' تایید کلمه عبور جدید'/>
 
                 <button type='submit' className='pass-recovery-but'>بازیابی کلمه عبور</button>
             </form>
