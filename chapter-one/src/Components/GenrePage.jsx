@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './GenrePage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -6,9 +6,29 @@ import BookCard from './BookCard';
 import sampleimg from './booksample.png';
 import Category from './Category';
 import Button from './Button';
+import Axios from "axios";
 
 
 function GenrePage() {
+    const [searchValue, setSearchValue] = useState('');
+
+    function handleSearch(){
+        const token='Token '+ sessionStorage.getItem('token');
+        console.log(token);
+        /*Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/",{headers: {
+            Authorization : "Token "+ sessionStorage.getItem('token')
+          }},{data: {search:searchValue}},
+        ).then((res)=>{
+            console.log(res);
+        })*/
+        
+    }
+
+
+
+
+
+
   return (
     <div className='main-genre-container'>
         <Navbar />
@@ -17,9 +37,10 @@ function GenrePage() {
         </div>
         <div className="genre-searchbox-div">
             <div className="genre-searchbox">
-                <input className="genre-searchbox-input" type="text" placeholder='دنبال چه کتابی میگردی؟  ' />
+                <input className="genre-searchbox-input" type="text" placeholder='دنبال چه کتابی میگردی؟  ' 
+                onChange={(e)=>{setSearchValue(e.target.value)}} />
             </div>
-            <Button className="genre-btn-search" type="submit" text="" icon="fas fa-search" />
+            <Button className="genre-btn-search" type="submit" text="" icon="fas fa-search" onClick={handleSearch} />
         </div>
 
         <div className="genre-sortby-div">
