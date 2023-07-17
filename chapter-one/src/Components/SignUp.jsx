@@ -25,14 +25,14 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === '' || email === '' || password === '' || checkbox === false) {
-            console.log("error");}
+            console.log("empty fields");}
         else {
            Axios.post("http://127.0.0.1:8000/api/user/signup/",{ email: email, fullname:username, password:password }).then(
             (response) => {
             const token = response.data.data;
             sessionStorage.setItem('token',token.slice(6));
             window.location.href = "/"
-          });
+          }).catch((err)=>{console.log(err)});
         }
     };
 

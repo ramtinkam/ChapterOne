@@ -9,10 +9,9 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        try{      
+        e.preventDefault();    
         if (email === '' || password === '') {
-          console.log('error');
+          console.log('empty fields');
         }
         else {
          Axios.post("http://127.0.0.1:8000/api/user/signin/",{ email: email, password:password }).then(
@@ -20,12 +19,9 @@ function Login() {
           const token = response.data.data;
           sessionStorage.setItem('token',token.slice(6));
           window.location.href = "/"
-        })
+        }).catch((err)=>{console.log(err)})
         }
-        }
-        catch(err){
-          console.log(err);
-        }
+
   };
     
 

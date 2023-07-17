@@ -5,7 +5,12 @@ import './Navbar.css';
 function Navbar() {
 
     function handleClick() {
-        window.location.href = '/login';
+        if (sessionStorage.getItem('token') === null){
+            window.location.href = '/login';
+        }
+        else{
+            window.location.href = '/profile'
+        }
         }
 
   return (

@@ -4,6 +4,7 @@
     flex-shrink: 0;
     background: #F5F5F5;
     flex-direction: column;
+    width: 100%;
 }
 .suggestions-and-buttons{
     align-items: center;

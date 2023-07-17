@@ -9,12 +9,18 @@ import historical from './historical.png';
 
 
 function Category() {
+    
+
+
     const [histButton,setHistButton] = useState(false);
 
     function handleHisClick() {
-            setHistButton(!histButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setHistButton(!histButton);
+            }
     }
 
 
@@ -22,9 +28,13 @@ function Category() {
     const [novelButton,setNovelButton] = useState(false);
 
     function handleNovelClick() {
-            setNovelButton(!novelButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setNovelButton(!novelButton);
+            }
+                    
     }
 
 
@@ -32,9 +42,12 @@ function Category() {
     const [poetryButton,setPoetrybutton] = useState(false);
 
     function handlePoetryClick() {
-            setPoetrybutton(!poetryButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setPoetrybutton(!poetryButton);
+            }
     }
 
 
@@ -42,9 +55,12 @@ function Category() {
     const [artButton,setArtButton] = useState(false);
 
     function handleArtClick() {
-            setArtButton(!artButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setArtButton(!artButton);
+            }
     }
 
 
@@ -52,9 +68,12 @@ function Category() {
     const [philButton,setPhilButton] = useState(false);
 
     function handlePhilClick() {
-            setPhilButton(!philButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setPhilButton(!philButton);
+            }
     }
 
 
@@ -62,9 +81,12 @@ function Category() {
     const [litButton,setLitButton] = useState(false);
 
     function handleLitClick() {
-            setLitButton(!litButton);
             if(window.location.href == 'http://localhost:3000/'){
-                    window.location.href = '/genre-page';}
+                window.location.href = '/genre-page';
+            }
+            else{
+                setLitButton(!litButton);
+            }
     }
     
 

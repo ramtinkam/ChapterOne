@@ -1,5 +1,8 @@
 
 .main-genre-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     width: 100%;
 }
@@ -69,7 +72,7 @@
     height: 50px;
     justify-content: right;
     border-radius: 10px;
-    margin-left: 195px;
+
     width: 1150px;
 }
 

@@ -9,9 +9,10 @@ import Navbar from './Navbar';
 
 
 const Landing = () => {
-    function handleClick() {
+    sessionStorage.setItem('histButton',false);
+    /*function handleClick() {
         window.location.href = '/login';
-        }
+        }*/
     return (
         <div className='landing-container'>
             <Navbar />

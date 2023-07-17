@@ -20,7 +20,7 @@ export const ForgotPassword = () => {
           (response) => {
           console.log(response);
           window.location.href = "/pass-recovery"
-        })
+        }).catch((err)=>{console.log(err)})
         }
         }
         catch(err){

@@ -25,7 +25,7 @@ function PassRecovery() {
             (response) => {
                 console.log(response);
             window.location.href = "/login"
-        })
+        }).catch((err)=>{console.log(err)})
         }
     };
     
