@@ -10,14 +10,15 @@ import PassRecovery from './Components/PassRecovery';
 import Author from './Components/Author';
 import BookCard from './Components/BookCard';
 import GenrePage from './Components/GenrePage';
+import Profile from './Components/Profile';
 
 function App() {
   return (
     <div className="App">
 
       {/* <GenrePage /> */}
+      {/* <Profile /> */}
 
-      {/* <Author /> */}
       <Routes>
       <Route path ="/" element={<Landing/>}></Route>
       <Route path ="login" element={<Login/>}></Route>
@@ -26,6 +27,7 @@ function App() {
       <Route path ="pass-recovery" element={<PassRecovery/>}></Route>
       <Route path ="author-page" element={<Author/>}></Route>
       <Route path ="genre-page" element={<GenrePage/>}></Route>
+      <Route path ="profile" element={<Profile/>}></Route>
       </Routes>
 
     </div>
