@@ -155,11 +155,32 @@
     flex-wrap: wrap;
     width: 300px;
     height: 300px;
+    flex-direction: column;
+}
+
+.book-commit-comment {
+    width: 254px;
+    height: 30px;
+    background-color: #3C5A80;
+    border: 0;
+    font-family: Estedad;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;   
+    color: #ecebeb; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.book-commit-comment:hover {
+    background-color: #c5c5c5;
 }
 
 .book-add-comment {
     width: 250px;
-    height: 210px;
+    height: 180px;
     background-color: #3C5A80;
     border: 0;
     text-align: right;
@@ -169,7 +190,8 @@
     font-weight: 500;
     line-height: normal;   
     color: #ecebeb; 
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .book-add-comment::placeholder {

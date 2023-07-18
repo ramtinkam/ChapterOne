@@ -90,6 +90,7 @@ function Book() {
                 </select>
                 <div className="book-comment">
                     <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" />
+                    <button className="book-commit-comment">ثبت نظر</button>
                     <div className="book-page-user-rate">
                         <StarRating />
                     </div>
