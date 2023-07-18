@@ -11,6 +11,7 @@ import Author from './Components/Author';
 import BookCard from './Components/BookCard';
 import GenrePage from './Components/GenrePage';
 import Profile from './Components/Profile';
+import Book from './Components/Book';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
 
       {/* <GenrePage /> */}
       {/* <Profile /> */}
+      <Book />
 
-      <Routes>
+      {/* <Routes>
       <Route path ="/" element={<Landing/>}></Route>
       <Route path ="login" element={<Login/>}></Route>
       <Route path ="signup" element={<SignUp/>}></Route>
@@ -28,7 +30,7 @@ function App() {
       <Route path ="author-page" element={<Author/>}></Route>
       <Route path ="genre-page" element={<GenrePage/>}></Route>
       <Route path ="profile" element={<Profile/>}></Route>
-      </Routes>
+      </Routes> */}
 
     </div>
   );
