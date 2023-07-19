@@ -28,7 +28,8 @@
 }
 
 .genre-searchbox-input {
-    display: block;
+    display: flex;
+    padding-inline: 10px;
     height: 2rem;
     width: 500px;
     text-align: right;
@@ -98,6 +99,8 @@
     font-weight: 400;
     line-height: normal;
     margin-right: 200px;
+    background-color:#AEDFF8 ;
+    border: none;
 }
 
 .genre-sortby-name:hover {
