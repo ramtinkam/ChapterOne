@@ -10,7 +10,7 @@ import Popup from 'reactjs-popup';
 import CommentSec from './CommentSec';
 
 
-function Book() {
+function Book(props) {
     const [isClicked, setIsClicked] = useState(false);
     function handleClick() {
         setIsClicked(true);
@@ -22,25 +22,25 @@ function Book() {
             <Navbar />
         </div>
         <div className="book-info-div">
-            <img className="book-page-img" src={book} alt="the-book-image" />
+            <img className="book-page-img" src={props.bookImage} alt="the-book-image" />
             <div className="book-middle-div">
-                <h className="book-page-name">علیه تفسیر</h>
+                <h className="book-page-name">{props.bookName}</h>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={author} alt="author-image" />
+                    <img className="book-page-middle-img" src={props.authorImage} alt="author-image" />
                     <h className="book-page-middle-header">:نویسنده</h>
-                    <h className="book-page-middle-name">سوزان سانتاگ</h>
+                    <h className="book-page-middle-name">{props.authorName}</h>
 
                 </div>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={author} alt="author-image" />
+                    <img className="book-page-middle-img" src={props.translatorImage} alt="translator-image" />
                     <h className="book-page-middle-header">:مترجم</h>
-                    <h className="book-page-middle-name">سوزان سانتاگ</h>
+                    <h className="book-page-middle-name">{props.translatorName}</h>
 
                 </div>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={author} alt="author-image" />
+                    <img className="book-page-middle-img" src={props.publisherImage} alt="publisher-image" />
                     <h className="book-page-middle-header">:انتشارات</h>
-                    <h className="book-page-middle-name">سوزان سانتاگ</h>
+                    <h className="book-page-middle-name">{props.publisherName}</h>
 
                 </div>
                 <div className="book-page-star-rating">
@@ -70,12 +70,12 @@ function Book() {
                     </svg>
                 </div>
                 <div className="book-page-star-info">
-                    <p className="book-page-rate-info">4.14</p>
+                    <p className="book-page-rate-info">{props.rateNumber}</p>
                     <hr className="book-page-line" />
-                    <p className='book-page-rate-info'>837</p>
+                    <p className='book-page-rate-info'>{props.userRateNumber}</p>
                     <p className="book-page-rate-info">نمره</p>
                     <hr className="book-page-line" />
-                    <p className='book-page-rate-info'>50</p>
+                    <p className='book-page-rate-info'>{props.commentsNumber}</p>
                     <p className='book-page-rate-info'>دیدگاه</p>
 
                 </div>
@@ -120,13 +120,18 @@ function Book() {
             
         </div>
 
-        <div className="book-page-discription-div">
-            <p className="book-page-discription">کتاب علیه تفسیر، اثری نوشته ی سوزان سونتاگ است که اولین بار در سال 1966 انتشار یافت. این کتاب، نخستین مجموعه از مقالات سونتاگ است و یک اثر کلاسیکِ مدرن به حساب می آید. کتاب علیه تفسیر از زمان اولین عرضه ی خود تا کنون، هیچ وقت از چرخه ی انتشار خارج نشده و نسل های زیادی از مخاطبین را در سراسر جهان تحت تأثیر قرار داده است. این اثر، دربردارنده ی برخی از بهترین مقاله های سونتاگ است و موضوعات جذابی همچون فیلم های علمی تخیلی، روانکاوی، تفکرات دینی و اجتماعی معاصر و البته پرداخت هایی نوین و آموزنده به اندیشه های چهره هایی جریان ساز همچون سارتر، کامو، سیمون وی، گدار، بکت و لوی استراوس را در خود جای داده است.</p>
+        <div className="book-page-description-div">
+            <p className="book-page-description">{props.bookDescription}</p>
         </div>
 
         <div className="book-page-comment-section-div">
             <h className="book-page-comment-header">:دیدگاه‌ها</h>
             <CommentSec
+            profileImg={props.userProfileImage}
+            userId={props.userId}
+            userComment={props.userComment}
+            />
+            {/* <CommentSec
             profileImg={profileImg}
             userId='RezaJammshidi'
             userComment='علیه تفسیر مجموعه متونی هست که سوزان سوتناک بین سال‌های ۲۶۹۱ تا ۵۶۹۱ در مواجه با دنیای مدرن بیش روش قلمی کرده. کتابی که توش هم از ادبیات حرف زده، هم از نمایش و رابطه‌ش با ادبیات نمایشی، هم از سینما و هم از هنرهای تجسمی. تنها حلقه‌ی وصل این اسی‌ها شاید نگاه فرمالیستی نویسنده به این پدیده‌ها باشه که وجه تئوریکش رو توی اولین متن کتاب بسط داده.
@@ -137,13 +142,7 @@ function Book() {
             userId='RezaJammshidi'
             userComment='علیه تفسیر مجموعه متونی هست که سوزان سوتناک بین سال‌های ۲۶۹۱ تا ۵۶۹۱ در مواجه با دنیای مدرن بیش روش قلمی کرده. کتابی که توش هم از ادبیات حرف زده، هم از نمایش و رابطه‌ش با ادبیات نمایشی، هم از سینما و هم از هنرهای تجسمی. تنها حلقه‌ی وصل این اسی‌ها شاید نگاه فرمالیستی نویسنده به این پدیده‌ها باشه که وجه تئوریکش رو توی اولین متن کتاب بسط داده.
             اما فارغ از این مسأله وقتی این مجموعه رو می‌خونی[حتی بخش‌های مربوط به تحلیل اجرای خاص یک گروه نمایشی از یه نمایشنامه و مقایسه اون با اجراهای دیگه که مخاطبین اصلیش خواننده‌های هم‌عصر نویسنده هستن] دنیایی جلوت ترسیم میشه هم از نمایش و رابطه‌ش با ادبیات نمایشی، هم از سینما و هم '
-            />
-            <CommentSec
-            profileImg={profileImg}
-            userId='RezaJammshidi'
-            userComment='علیه تفسیر مجموعه متونی هست که سوزان سوتناک بین سال‌های ۲۶۹۱ تا ۵۶۹۱ در مواجه با دنیای مدرن بیش روش قلمی کرده. کتابی که توش هم از ادبیات حرف زده، هم از نمایش و رابطه‌ش با ادبیات نمایشی، هم از سینما و هم از هنرهای تجسمی. تنها حلقه‌ی وصل این اسی‌ها شاید نگاه فرمالیستی نویسنده به این پدیده‌ها باشه که وجه تئوریکش رو توی اولین متن کتاب بسط داده.
-            اما فارغ از این مسأله وقتی این مجموعه رو می‌خونی[حتی بخش‌های مربوط به تحلیل اجرای خاص یک گروه نمایشی از یه نمایشنامه و مقایسه اون با اجراهای دیگه که مخاطبین اصلیش خواننده‌های هم‌عصر نویسنده هستن] دنیایی جلوت ترسیم میشه هم از نمایش و رابطه‌ش با ادبیات نمایشی، هم از سینما و هم '
-            />
+            /> */}
         </div>
 
         <Footer />

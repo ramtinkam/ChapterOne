@@ -80,9 +80,6 @@
     line-height: normal;
 }
 
-.book-page-star-rating {
-
-}
 
 .book-page-star-info{
     display: flex;
@@ -286,14 +283,14 @@
     border-radius: 10px;
 }
 
-.book-page-discription-div {
+.book-page-description-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px;
 }
 
-.book-page-discription {
+.book-page-description {
     text-align: justify;
     direction:rtl;
     color: #3D5B81;
