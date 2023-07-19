@@ -9,10 +9,12 @@ import Navbar from './Navbar';
 
 
 const Landing = () => {
-    sessionStorage.setItem('histButton',false);
-    /*function handleClick() {
-        window.location.href = '/login';
-        }*/
+    sessionStorage.setItem('histButton',true);
+    sessionStorage.setItem('artButton',true);
+    sessionStorage.setItem('litButton',true);
+    sessionStorage.setItem('philButton',true);
+    sessionStorage.setItem('novelButton',true);
+    sessionStorage.setItem('poetryButton',true);
     return (
         <div className='landing-container'>
             <Navbar />

@@ -1,6 +1,7 @@
 
 .book-card {
     display: flex;
+    flex-direction: column;
     width: 200px;
     height: 280px;
     margin: 15px 20px;
@@ -11,47 +12,49 @@
 }
 
 .book-card-rate-box {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 18px;
-    margin-left: 13px;
+    margin-left: 5px;
     margin-top: 30px;
 }
 
 .book-card-top {
-    align-content: center;
-    justify-content: center;
+    width: 200px;
+    height:190px;
     display: flex;
-    width: 260px;
-    height: 285px;
-    padding-top: 15px;
-    position: absolute;
+    justify-content: space-between;
+    
+
 }
 
 .book-card-sample-img {
-    width: 185px;
-    height: 165px;
-    padding-right: 40px;
+    width:170px;
+    height:190px;
+    border-top-right-radius: 10px;
 }
 
 .book-card-bottom {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     width: 200px;
     height: 25px;
-    margin-top: 190px;
     text-align: right;
+
 }
 
 .book-card-name-div {
+    flex-direction: column;
+    width:200px;
     display: flex;
     text-align: right;
     height: min-content;
-    justify-content: right;
+    align-items: center;
+
 }
 
 .book-card-name {
     display: flex;
-    position: absolute;
     height: min-content;
     color: #000;
     font-family: Estedad;
@@ -60,6 +63,7 @@
     font-weight: 450;
     line-height: normal;
     text-align: right;
+    
 }
 
 .book-card-author {
@@ -70,7 +74,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: 30px;
 }
 
 .book-card-button {

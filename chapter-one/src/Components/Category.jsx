@@ -20,6 +20,7 @@ function Category() {
             }
             else{
                 setHistButton(!histButton);
+                sessionStorage.setItem('histButton',histButton);
             }
     }
 
@@ -33,6 +34,7 @@ function Category() {
             }
             else{
                 setNovelButton(!novelButton);
+                sessionStorage.setItem('novelButton',novelButton);
             }
                     
     }
@@ -47,6 +49,7 @@ function Category() {
             }
             else{
                 setPoetrybutton(!poetryButton);
+                sessionStorage.setItem('poetryButton',poetryButton);
             }
     }
 
@@ -60,6 +63,7 @@ function Category() {
             }
             else{
                 setArtButton(!artButton);
+                sessionStorage.setItem('artButton',artButton);
             }
     }
 
@@ -73,6 +77,7 @@ function Category() {
             }
             else{
                 setPhilButton(!philButton);
+                sessionStorage.setItem('philButton',philButton);
             }
     }
 
@@ -86,6 +91,7 @@ function Category() {
             }
             else{
                 setLitButton(!litButton);
+                sessionStorage.setItem('litButton',litButton);
             }
     }
     
@@ -97,7 +103,7 @@ function Category() {
         <h className="cat-header">دسته‌بندی ها</h>
         <div className='main-category'>
             <div className="category">
-            <button className='cat-button' defaultValue={histButton} onClick={handleHisClick} style={{
+            <button className='cat-button' Value={histButton} onClick={handleHisClick} style={{
             backgroundColor: histButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={historical} alt="historical-img"/>
@@ -105,7 +111,7 @@ function Category() {
             <p className="cat-text">تاریخی</p>
         </div>
          <div className="category">
-            <button className='cat-button' defaultValue={novelButton} onClick={handleNovelClick} style={{
+            <button className='cat-button' Value={novelButton} onClick={handleNovelClick} style={{
             backgroundColor: novelButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={novel} alt="novel-img"/>
@@ -113,7 +119,7 @@ function Category() {
             <p className="cat-text">رمان</p>
         </div>
         <div className="category">
-            <button className='cat-button' defaultValue={poetryButton} onClick={handlePoetryClick} style={{
+            <button className='cat-button' Value={poetryButton} onClick={handlePoetryClick} style={{
             backgroundColor: poetryButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={poetry} alt="poetry-img"/>
@@ -121,7 +127,7 @@ function Category() {
             <p className="cat-text">شعر</p>
         </div>
         <div className="category">
-            <button className='cat-button' defaultValue={artButton} onClick={handleArtClick} style={{
+            <button className='cat-button' Value={artButton} onClick={handleArtClick} style={{
             backgroundColor: artButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={art} alt="art-img"/>
@@ -129,7 +135,7 @@ function Category() {
             <p className="cat-text">هنر</p>
         </div>
         <div className="category">
-            <button className='cat-button' defaultValue={philButton} onClick={handlePhilClick} style={{
+            <button className='cat-button' Value={philButton} onClick={handlePhilClick} style={{
             backgroundColor: philButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={philosophy} alt="philosophy-img"/>
@@ -137,7 +143,7 @@ function Category() {
             <p className="cat-text">فلسفه</p>
         </div>
         <div className="category">
-            <button className='cat-button' defaultValue={litButton} onClick={handleLitClick} style={{
+            <button className='cat-button' Value={litButton} onClick={handleLitClick} style={{
             backgroundColor: litButton ? '#F39F74':'',
             }}>
                 <img className="cat-image" src={literature} alt="literature-img"/>

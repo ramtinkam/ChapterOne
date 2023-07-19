@@ -11,19 +11,60 @@ import Axios from "axios";
 
 function GenrePage() {
     const [searchValue, setSearchValue] = useState('');
+    const [searchResult,setSearchResult] = useState([]);
+    const [state, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
 
     function handleSearch(){
-        const token='Token '+ sessionStorage.getItem('token');
-        console.log(token);
-        /*Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/",{headers: {
-            Authorization : "Token "+ sessionStorage.getItem('token')
-          }},{data: {search:searchValue}},
-        ).then((res)=>{
-            console.log(res);
-        })*/
+        const config = {
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
+            params:{search:searchValue}     
+        }
+        if (sessionStorage.getItem('token') === null){
+            alert('please sign in before searching');
+        }
+        else{
+            Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+            ).then((res)=>{
+                    setSearchResult(res.data.data);
+            })
+        }
         
     }
 
+    function handleSortbyName(){
+        searchResult.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+                fb = b.name.toLowerCase();
+        
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        forceUpdate();
+        
+    }
+    function handleSortbyRating(){}
+    function handleSortbyDate(){
+        searchResult.sort((a, b) => {
+            let fa = a.release_date,
+                fb = b.release_date;
+        
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        forceUpdate();
+
+    }
 
 
 
@@ -37,51 +78,30 @@ function GenrePage() {
         </div>
         <div className="genre-searchbox-div">
             <div className="genre-searchbox">
-                <input className="genre-searchbox-input" type="text" placeholder='دنبال چه کتابی میگردی؟  ' 
+                <input className="genre-searchbox-input" type="text" placeholder='دنبال چه کتابی میگردی؟' 
                 onChange={(e)=>{setSearchValue(e.target.value)}} />
             </div>
             <Button className="genre-btn-search" type="submit" text="" icon="fas fa-search" onClick={handleSearch} />
         </div>
 
         <div className="genre-sortby-div">
-            <a className="genre-sortby-name" href='#'> الفبایی</a>
-            <a className="genre-sortby-name" href='#'>محبوب ترین ها</a>
-            <a className="genre-sortby-name" href='#'> تازه‌ ترین ها</a>
+            <button className="genre-sortby-name" onClick={handleSortbyName}> الفبایی</button>
+            <button className="genre-sortby-name" onClick={handleSortbyRating}>محبوب ترین ها</button>
+            <button className="genre-sortby-name" onClick={handleSortbyDate}> تازه‌ ترین ها</button>
             <h className="genre-sortby-header">:مرتب سازی بر اساس </h>
             
         </div>
 
-        <div className="genre-bookcard">
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
+        <div className="genre-bookcard" >
+            {searchResult.map((e)=>{
+                return(
+                    <BookCard
+                image={e.image}
+                bookName={e.name}
                 authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
+                />
+                );
+            })}
         </div>
 
         <div className="genre-page-navigation">
