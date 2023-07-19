@@ -6,6 +6,7 @@ import Footer from './Footer';
 import book from './book-img.jpg';
 import author from './book-author-img.jpg';
 import StarRating from './StarRating';
+import Popup from 'reactjs-popup';
 import CommentSec from './CommentSec';
 
 
@@ -83,13 +84,32 @@ function Book() {
             </div>
 
             <div className="book-page-add-comment-div">
-            <select name="choice" className={isClicked ? 'clicked' : 'notClicked'} onClick={handleClick}>
+                <Popup trigger={<button className='book-page-add-book'>می‌خواهم بخوانم</button>}modal nested>
+                    <div className="book-popup-main-div">
+                        <div className="book-popup-close-div">
+                            <button className='book-popup-close'>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0V0z"/>
+                                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <h className="book-popup-header">:قفسه مورد نظرتان را انتخاب کنید</h>
+                        </div>
+                        
+                        <button className="book-popup-buttons">می‌خواهم بخوانم</button>
+                        <button className="book-popup-buttons">در حال مطالعه</button>
+                        <button className="book-popup-buttons">خوانده شده</button>
+                    </div>
+                </Popup>
+
+            {/* <select name="choice" className={isClicked ? 'clicked' : 'notClicked'} onClick={handleClick}>
                     <option value="want-to-read">می‌خواهم بخوانم</option>
                     <option value="reading">در حال مطالعه</option>
                     <option value="read">خوانده شده</option>
-                </select>
+                </select> */}
                 <div className="book-comment">
-                    <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" />
+                    {/* <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" /> */}
+                    <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" />
                     <button className="book-commit-comment">ثبت نظر</button>
                     <div className="book-page-user-rate">
                         <StarRating />
