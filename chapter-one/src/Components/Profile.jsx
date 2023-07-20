@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import Navbar from './Navbar';
 import BookCard from './BookCard';
@@ -9,10 +9,29 @@ import book1 from './booksample1.jpg';
 import book2 from './booksample2.jpg';
 import book3 from './booksample3.jpg';
 import book4 from './booksample4.jpg';
+import Axios from "axios";
+
 
 
 
 function Profile() {
+    const [favBooks,setFavBooks] = useState([]);
+    function getFavBooks(){
+        Axios.get("http://127.0.0.1:8000/api/socialmedia/get-favorite-books/",
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
+            (res)=>{
+                setFavBooks(res.data.data);
+        }).catch((err)=>{console.log(err)});}
+
+    useEffect(()=>{
+        getFavBooks();
+    },[]);
+
+
+
+
+
+
   return (
     <div className='main-profile-container'>
         <div className="profile-navbar-div">
@@ -65,31 +84,16 @@ function Profile() {
         <div className="profile-page-bottom">
             <div className="profile-bottom-sec">
                 <button className="profile-see-all-but">مشاهده کامل</button>
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
+                {favBooks.map((e,index)=>{ 
+                return(
+                    <BookCard key={index}
+                image={e.image}
+                bookName={e.name}
                 authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
+                id = {e.id}
+                />
+                );
+                })}
                 <h className="profile-bottom-header">کتابخانه </h>
                 
             </div>

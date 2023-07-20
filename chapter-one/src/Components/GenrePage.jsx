@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './GenrePage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -10,10 +10,14 @@ import Axios from "axios";
 
 
 function GenrePage() {
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, setSearchValue] = useState(sessionStorage.getItem('searchValue'));
     const [searchResult,setSearchResult] = useState([]);
     const [state, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
+    useEffect(()=>{
+        handleSearch();
+        sessionStorage.removeItem('searchValue');
+    },[]);
 
     function handleSearch(){
         const config = {
@@ -27,7 +31,7 @@ function GenrePage() {
             Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
             ).then((res)=>{
                     setSearchResult(res.data.data);
-            })
+            }).catch((err)=>{setSearchResult([])})
         }
         
     }
@@ -55,10 +59,10 @@ function GenrePage() {
                 fb = b.release_date;
         
             if (fa < fb) {
-                return -1;
+                return 1;
             }
             if (fa > fb) {
-                return 1;
+                return -1;
             }
             return 0;
         });
@@ -78,7 +82,7 @@ function GenrePage() {
         </div>
         <div className="genre-searchbox-div">
             <div className="genre-searchbox">
-                <input className="genre-searchbox-input" type="text" placeholder='دنبال چه کتابی میگردی؟' 
+                <input className="genre-searchbox-input" type="text" value={searchValue} placeholder='دنبال چه کتابی میگردی؟' 
                 onChange={(e)=>{setSearchValue(e.target.value)}} />
             </div>
             <Button className="genre-btn-search" type="submit" text="" icon="fas fa-search" onClick={handleSearch} />
@@ -93,12 +97,13 @@ function GenrePage() {
         </div>
 
         <div className="genre-bookcard" >
-            {searchResult.map((e)=>{
+            {searchResult.map((e, index)=>{
                 return(
-                    <BookCard
+                    <BookCard key={index}
                 image={e.image}
                 bookName={e.name}
                 authorName=' آلبر کامو'
+                id = {e.id}
                 />
                 );
             })}

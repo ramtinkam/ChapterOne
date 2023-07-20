@@ -1,10 +1,23 @@
 import React from 'react';
 import './BookCard.css';
+import Axios from "axios";
 
 
 function BookCard(props) {
+    
+    function handleAddBook(){
+
+        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id},
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
+            ).then((res)=>{
+                    console.log(res);
+            }).catch((err)=>{console.log(err)});
+    }
+
+
+
   return (
-    <div className='book-card'>
+    <div className='book-card' >
         <div className='book-card-top'>
             <div className='book-card-rate-box'>
                 <svg className='book-card-rate' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +48,7 @@ function BookCard(props) {
                 
             </div>
             <div className="book-card-button">
-                <button className="book-card-add-library">افزودن به کتابخانه </button>
+                <button className="book-card-add-library" onClick={handleAddBook}>افزودن به کتابخانه </button>
             </div>
 
     </div>
