@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, setState } from 'react';
 import './Book.css';
 import profileImg from './rezajamshidi.jpg';
 import Navbar from './Navbar';
@@ -8,13 +8,42 @@ import author from './book-author-img.jpg';
 import StarRating from './StarRating';
 import Popup from 'reactjs-popup';
 import CommentSec from './CommentSec';
+import { useParams } from 'react-router-dom';
+import Axios from "axios";
 
 
 function Book(props) {
+    let popupOpen = false;
     const [isClicked, setIsClicked] = useState(false);
     function handleClick() {
         setIsClicked(true);
-      }
+    }
+    
+    
+    
+    const [bookInfo,setBookInfo] = useState({});
+    function getBook(param){
+        const config = {
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
+            params:{id:Number(param.id)}     
+        }
+        console.log(param.id);
+        Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+        ).then((res)=>{
+                setBookInfo(res.data.data[0]);
+                console.log(bookInfo);
+        }).catch((err)=>{
+        console.log(err);}
+        )
+
+    }
+    
+    const params = useParams();
+    useEffect(()=>{
+        getBook(params);
+    },[]);
+
+    
 
   return (
     <div className='book-main-container'>
@@ -22,9 +51,9 @@ function Book(props) {
             <Navbar />
         </div>
         <div className="book-info-div">
-            <img className="book-page-img" src={props.bookImage} alt="the-book-image" />
+            <img className="book-page-img" src={bookInfo.image} alt="the-book-image" />
             <div className="book-middle-div">
-                <h className="book-page-name">{props.bookName}</h>
+                <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">
                     <img className="book-page-middle-img" src={props.authorImage} alt="author-image" />
                     <h className="book-page-middle-header">:نویسنده</h>
@@ -84,15 +113,10 @@ function Book(props) {
             </div>
 
             <div className="book-page-add-comment-div">
-                <Popup trigger={<button className='book-page-add-book'>می‌خواهم بخوانم</button>}modal nested>
+                <Popup closeByBackdropClick={true} isOpen={popupOpen}
+                trigger={<button className='book-page-add-book'>می‌خواهم بخوانم</button>}modal nested>
                     <div className="book-popup-main-div">
                         <div className="book-popup-close-div">
-                            <button className='book-popup-close'>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0V0z"/>
-                                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
                             <h className="book-popup-header">:قفسه مورد نظرتان را انتخاب کنید</h>
                         </div>
                         
@@ -121,7 +145,7 @@ function Book(props) {
         </div>
 
         <div className="book-page-description-div">
-            <p className="book-page-description">{props.bookDescription}</p>
+            <p className="book-page-description">{bookInfo.description}</p>
         </div>
 
         <div className="book-page-comment-section-div">
