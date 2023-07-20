@@ -3,12 +3,14 @@ import './Profile.css';
 import Navbar from './Navbar';
 import BookCard from './BookCard';
 import Footer from './Footer';
+import Follow from './Follow';
 import profileImg from './rezajamshidi.jpg';
 import sampleimg from './booksample.png';
 import book1 from './booksample1.jpg';
 import book2 from './booksample2.jpg';
 import book3 from './booksample3.jpg';
 import book4 from './booksample4.jpg';
+import Popup from 'reactjs-popup';
 import Axios from "axios";
 
 
@@ -26,9 +28,6 @@ function Profile() {
     useEffect(()=>{
         getFavBooks();
     },[]);
-
-
-
 
 
 
@@ -62,11 +61,39 @@ function Profile() {
                     </div>
                     <div className="profile-info">
                         <h className="profile-info-digits">83</h>
-                        <a href="#" className="profile-info-link">Followers</a>
+                        <Popup trigger={<button className="profile-info-button">Followers</button>}modal nested>
+                            <div className="follow-main-div">
+                                <div className="follow-head-div">
+                                    <h className="follow-header">Followers</h>
+                                </div>
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                            </div>
+                        </Popup>
+                        {/* <a href="#" className="profile-info-link">Followers</a> */}
                     </div>
                     <div className="profile-info">
                         <h className="profile-info-digits">83</h>
-                        <a href="#" className="profile-info-link">Following</a>
+                        <Popup trigger={<button className="profile-info-button">Following</button>}modal nested>
+                            <div className="follow-main-div">
+                                <div className="follow-head-div">
+                                    <h className="follow-header">Following</h>
+                                    
+                                </div>
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                                <Follow />
+                            </div>
+                        </Popup>
+                        
+                        {/* <a href="#" className="profile-info-link">Following</a> */}
                     </div>
                 </div>
             </div>

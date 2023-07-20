@@ -18,8 +18,8 @@ function App() {
     <div className="App">
 
       {/* <GenrePage /> */}
-      {/* <Profile /> */}
-      <Book />
+      <Profile />
+
 
       {/* <Routes>
       <Route path ="/" element={<Landing/>}></Route>
@@ -30,6 +30,7 @@ function App() {
       <Route path ="author-page" element={<Author/>}></Route>
       <Route path ="genre-page" element={<GenrePage/>}></Route>
       <Route path ="profile" element={<Profile/>}></Route>
+      <Route path ="book" element={<Book/>}></Route>
       </Routes> */}
 
     </div>
