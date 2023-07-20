@@ -5,6 +5,15 @@ import Button from './Button';
 
 
 function Searchbox() {
+  const [landingSearch,setLandingSearch] = useState('');
+  function handleSearch(){
+    sessionStorage.setItem('searchValue',landingSearch);
+    window.location.href="/genre-page";
+  }
+
+
+
+
   return (
     <div className='main-searchbox'>
       <img className="searchbox-img" src={image} alt="library-img" />
@@ -16,9 +25,11 @@ function Searchbox() {
        ".که کتاب‌ها تو را به سرزمین‌های ناشناخته و دست‌نیافتنی ببرند
       </p>
       <div className="searchbar">
-        <input className="search-input" type="text" placeholder='دنبال چه کتابی میگردی؟' />
+        <input className="search-input" type="text" placeholder='دنبال چه کتابی میگردی؟' 
+        onChange={(e)=>{setLandingSearch(e.target.value)}}/>
       </div>
-      <Button className="btn-search" type="submit" text="" icon="fas fa-search" />
+      <Button className="btn-search" type="submit" text="" icon="fas fa-search" onClick={handleSearch}
+      />
       
 
     </div>

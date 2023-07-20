@@ -9,6 +9,7 @@ const Button = (props) => {
         className={`${classes.button} ${props.className}`}
         onClick={props.onClick}
         disabled={props.disabled}
+        onChange={props.onChange}
         >
             <span className={classes.button__text}>{props.text}</span>
             <span className={classes.button__icon}>
