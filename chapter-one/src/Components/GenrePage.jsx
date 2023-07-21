@@ -85,7 +85,21 @@ function GenrePage() {
         forceUpdate();
         
     }
-    function handleSortbyRating(){}
+    function handleSortbyRating(){
+        searchResult.sort((a, b) => {
+            let fa = a.average_rating,
+                fb = b.average_rating;
+        
+            if (fa < fb) {
+                return 1;
+            }
+            if (fa > fb) {
+                return -1;
+            }
+            return 0;
+        });
+        forceUpdate();
+    }
     function handleSortbyDate(){
         searchResult.sort((a, b) => {
             let fa = a.release_date,
@@ -135,7 +149,9 @@ function GenrePage() {
                     <BookCard key={index}
                 image={e.image}
                 bookName={e.name}
-                authorName={e.authorName}
+                authorName={" "+e.authors[0].full_name}
+                authorId = {e.authors[0].id}
+                avgRate ={e.average_rating}
                 id = {e.id}
                 />
                 );

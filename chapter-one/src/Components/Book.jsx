@@ -10,27 +10,28 @@ import Popup from 'reactjs-popup';
 import CommentSec from './CommentSec';
 import { useParams } from 'react-router-dom';
 import Axios from "axios";
+import {Rating} from 'react-simple-star-rating'
 
 
 function Book(props) {
     const params = useParams();
-    const [rating,setRating]= useState(0);
     const [favBooks,setFavBooks] = useState([]);
+    const [defaultRating,setDefaultRating] = useState(0);
+    const [authorInfo,setAuthorInfo] = useState([]);
     function getBookRating(){
         const config = {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}    
         }
         Axios.get(`http://127.0.0.1:8000/api/socialmedia/books/rating/${params.id}`, config
         ).then((res)=>{
-            console.log(res.data.rating);
-            setRating(4);
+            setDefaultRating(res.data.rating);
         }).catch((err)=>{
-        sessionStorage.setItem('rating',0);
+        setDefaultRating(0);
         console.log(err);}
         )
     }
-    const [state, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
+    //const [state, updateState] = React.useState();
+    //const forceUpdate = React.useCallback(() => updateState({}), []);
 
     function popupFunc(){
         let flg =false
@@ -93,6 +94,7 @@ function Book(props) {
         Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
         ).then((res)=>{
                 setBookInfo(res.data.data[0]);
+                setAuthorInfo(res.data.data[0].authors[0]);
         }).catch((err)=>{
         console.log(err);}
         )
@@ -104,9 +106,52 @@ function Book(props) {
         getBook(params);
         getBookRating();
         getFavBooks();
+        getComments();
 
     },[]);
 
+
+    const [rating, setRating] = useState(0) // initial rating value
+
+    // Catch Rating value
+    const handleRating = (rate) => {
+        setRating(rate)
+        const config ={
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
+            
+          }
+          Axios.post("http://127.0.0.1:8000/api/socialmedia/rate-books/",{"book_id": bookInfo.id,"rating": rate},config
+            ).then((res)=>{console.log(res)})
+    }
+
+    const [comment,setComment] = useState('');
+    function addComment(){
+        if (comment === ''){
+            alert('please write something');
+        }
+        else{
+            const config ={
+                headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
+            }
+            Axios.post("http://127.0.0.1:8000/api/socialmedia/comments/add/",{"text": comment,"book_id": bookInfo.id,
+            'parent_comment':null},config
+            ).then((res)=>{console.log(res)})
+        }
+    }
+
+    const[commentArray,setCommentArray]=useState([]);
+    function getComments(){
+        const config ={
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
+        }
+        Axios.get(`http://127.0.0.1:8000/api/socialmedia/comments/get/${params.id}`, config
+        ).then((res)=>{
+            console.log(res.data);
+            setCommentArray(res.data);
+        }).catch((err)=>{
+        console.log(err);}
+        )
+    }
     
 
   return (
@@ -119,9 +164,9 @@ function Book(props) {
             <div className="book-middle-div">
                 <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={props.authorImage} alt="author-image" />
+                    <img className="book-page-middle-img" alt="author-image" />
                     <h className="book-page-middle-header">:نویسنده</h>
-                    <h className="book-page-middle-name">{props.authorName}</h>
+                    <h className="book-page-middle-name">{authorInfo.full_name}</h>
 
                 </div>
                 <div className="book-middle-info-div">
@@ -137,7 +182,15 @@ function Book(props) {
 
                 </div>
                 <div className="book-page-star-rating">
-                    <StarRating disabled={false}  rate={4}/>
+                <Rating
+                initialValue={bookInfo.average_rating}
+                readonly={true}
+                size={30}
+                allowFraction={true}
+                fillColor='#F39F74'
+                emptyColor='gray'
+                className='foo' // Will remove the inline style if applied
+                />
                     
                 </div>
                 <div className="book-page-star-info">
@@ -146,7 +199,7 @@ function Book(props) {
                     <p className='book-page-rate-info'>{4}</p>
                     <p className="book-page-rate-info">نمره</p>
                     <hr className="book-page-line" />
-                    <p className='book-page-rate-info'>{props.commentsNumber}</p>
+                    <p className='book-page-rate-info'>{commentArray.length}</p>
                     <p className='book-page-rate-info'>دیدگاه</p>
 
                 </div>
@@ -172,10 +225,19 @@ function Book(props) {
                 </select> */}
                 <div className="book-comment">
                     {/* <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" /> */}
-                    <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" />
-                    <button className="book-commit-comment">ثبت نظر</button>
+                    <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment"
+                    onChange={(e)=>{setComment(e.target.value)}} />
+                    <button className="book-commit-comment" onClick={addComment}>ثبت نظر</button>
                     <div className="book-page-user-rate">
-                        <StarRating disabled={false} bookId={bookInfo.id} rate={sessionStorage.getItem('rating')} />
+                    <Rating
+                        onClick={handleRating}
+                        ratingValue={rating}
+                        initialValue={defaultRating}
+                        size={25}
+                        fillColor='#F39F74'
+                        emptyColor='gray'
+                        className='foo' // Will remove the inline style if applied
+                        />
                         
                     </div>
                 </div>
@@ -190,11 +252,14 @@ function Book(props) {
 
         <div className="book-page-comment-section-div">
             <h className="book-page-comment-header">:دیدگاه‌ها</h>
-            <CommentSec
-            profileImg={props.userProfileImage}
-            userId={props.userId}
-            userComment={props.userComment}
-            />
+            {commentArray.map((e)=>{return(
+                <CommentSec
+                profileImg={'https://img.freepik.com/free-icon/user_318-804790.jpg?size=626&ext=jpg'}
+                userId={e.user}
+                userComment={e.text}
+                />)
+            })}
+            
             {/* <CommentSec
             profileImg={profileImg}
             userId='RezaJammshidi'

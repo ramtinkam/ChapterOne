@@ -135,6 +135,7 @@ function Profile() {
                     <BookCard key={index}
                 image={'https://'+e.image.slice(16)}
                 bookName={e.name}
+                avgRate ={e.average_rating}
                 authorName=' آلبر کامو'
                 id = {e.id}
                 />
@@ -151,6 +152,7 @@ function Profile() {
                 return(
                     <BookCard key={index}
                 image={'https://'+e.image.slice(16)}
+                avgRate ={e.average_rating}
                 bookName={e.name}
                 authorName=' آلبر کامو'
                 id = {e.id}
@@ -168,6 +170,7 @@ function Profile() {
                 return(
                     <BookCard key={index}
                 image={'https://'+e.image.slice(16)}
+                avgRate ={e.average_rating}
                 bookName={e.name}
                 authorName=' آلبر کامو'
                 id = {e.id}

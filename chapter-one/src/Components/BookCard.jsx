@@ -3,6 +3,8 @@ import './BookCard.css';
 import Axios from "axios";
 import Popup from 'reactjs-popup'
 import StarRating from './StarRating';
+import {Rating} from 'react-simple-star-rating'
+
 
 
 function BookCard(props) {
@@ -62,28 +64,23 @@ function BookCard(props) {
                     getFavBooks();
             }).catch((err)=>{console.log(err)});
     }
-    const [bookInfo,setBookInfo] = useState({});
-    function getBook(){
-        const config = {
-            headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
-            params:{id:Number(props.id)}     
-        }
-        Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
-        ).then((res)=>{
-                setBookInfo(res.data.data[0]);
-        }).catch((err)=>{
-        console.log(err);}
-        )
 
-    }
+
 
 
   return (
     <div className='book-card' >
+        <Rating
+                initialValue={props.avgRate}
+                readonly={true}
+                size={20}
+                allowFraction={true}
+                fillColor='#F39F74'
+                emptyColor='gray'
+                className='foo' // Will remove the inline style if applied
+                />
         <div className='book-card-top'>
-            <div className='book-card-rate-box'>
-                <StarRating rate={bookInfo.average_rating}/>
-            </div>
+         
             <div className="book-card-img-container">
                 <img className="book-card-sample-img" src={props.image} alt="book-image" />
             </div>

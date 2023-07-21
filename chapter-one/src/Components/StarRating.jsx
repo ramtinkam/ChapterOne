@@ -4,8 +4,8 @@ import  Axios  from 'axios';
 
 
 function StarRating(props) {
-    const [rating, setRating] = useState(props.rate);
-    const [hover, setHover] = useState(props.rate);
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
 
     function addRating(rating,bookId){
       const config ={
