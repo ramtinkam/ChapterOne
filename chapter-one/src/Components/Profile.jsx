@@ -17,15 +17,33 @@ import Axios from "axios";
 
 
 function Profile() {
+    const [profileInfo,setProfileInfo]=useState({});
     const [favBooks,setFavBooks] = useState([]);
+    function logOut(){
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userId');
+        window.location.href='/';
+    }
     function getFavBooks(){
-        Axios.get("http://127.0.0.1:8000/api/socialmedia/get-favorite-books/",
+        Axios.get(`http://127.0.0.1:8000/api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
             (res)=>{
+                console.log(res);
                 setFavBooks(res.data.data);
-        }).catch((err)=>{console.log(err)});}
+        }).catch((err)=>{console.log(err)});
+    }
+
+    function getProfileInfo(){
+        Axios.get(`http://127.0.0.1:8000/api/user/getprofile/${sessionStorage.getItem('userId')}/`,
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then((res)=>{
+            setProfileInfo(res.data);
+        })
+    }
+
+    
 
     useEffect(()=>{
+        getProfileInfo();
         getFavBooks();
     },[]);
 
@@ -37,30 +55,30 @@ function Profile() {
             <Navbar />
         </div>
         <div className="profile-edit-div">
-            <button className="edit-profile-button">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 15.75C9.93 15.75 8.25 14.07 8.25 12C8.25 9.93 9.93 8.25 12 8.25C14.07 8.25 15.75 9.93 15.75 12C15.75 14.07 14.07 15.75 12 15.75ZM12 9.75C10.76 9.75 9.75 10.76 9.75 12C9.75 13.24 10.76 14.25 12 14.25C13.24 14.25 14.25 13.24 14.25 12C14.25 10.76 13.24 9.75 12 9.75Z" fill="#292D32"/>
-                    <path d="M15.212 22.19C15.002 22.19 14.792 22.16 14.582 22.11C13.962 21.94 13.442 21.55 13.112 21L12.992 20.8C12.402 19.78 11.592 19.78 11.002 20.8L10.892 20.99C10.562 21.55 10.042 21.95 9.42195 22.11C8.79195 22.28 8.14195 22.19 7.59195 21.86L5.87195 20.87C5.26195 20.52 4.82195 19.95 4.63195 19.26C4.45195 18.57 4.54195 17.86 4.89195 17.25C5.18195 16.74 5.26195 16.28 5.09195 15.99C4.92195 15.7 4.49195 15.53 3.90195 15.53C2.44195 15.53 1.25195 14.34 1.25195 12.88V11.12C1.25195 9.66004 2.44195 8.47004 3.90195 8.47004C4.49195 8.47004 4.92195 8.30004 5.09195 8.01004C5.26195 7.72004 5.19195 7.26004 4.89195 6.75004C4.54195 6.14004 4.45195 5.42004 4.63195 4.74004C4.81195 4.05004 5.25195 3.48004 5.87195 3.13004L7.60195 2.14004C8.73195 1.47004 10.222 1.86004 10.902 3.01004L11.022 3.21004C11.612 4.23004 12.422 4.23004 13.012 3.21004L13.122 3.02004C13.802 1.86004 15.292 1.47004 16.432 2.15004L18.152 3.14004C18.762 3.49004 19.202 4.06004 19.392 4.75004C19.572 5.44004 19.482 6.15004 19.132 6.76004C18.842 7.27004 18.762 7.73004 18.932 8.02004C19.102 8.31004 19.532 8.48004 20.122 8.48004C21.582 8.48004 22.772 9.67004 22.772 11.13V12.89C22.772 14.35 21.582 15.54 20.122 15.54C19.532 15.54 19.102 15.71 18.932 16C18.762 16.29 18.832 16.75 19.132 17.26C19.482 17.87 19.582 18.59 19.392 19.27C19.212 19.96 18.772 20.53 18.152 20.88L16.422 21.87C16.042 22.08 15.632 22.19 15.212 22.19ZM12.002 18.49C12.892 18.49 13.722 19.05 14.292 20.04L14.402 20.23C14.522 20.44 14.722 20.59 14.962 20.65C15.202 20.71 15.442 20.68 15.642 20.56L17.372 19.56C17.632 19.41 17.832 19.16 17.912 18.86C17.992 18.56 17.952 18.25 17.802 17.99C17.232 17.01 17.162 16 17.602 15.23C18.042 14.46 18.952 14.02 20.092 14.02C20.732 14.02 21.242 13.51 21.242 12.87V11.11C21.242 10.48 20.732 9.96004 20.092 9.96004C18.952 9.96004 18.042 9.52004 17.602 8.75004C17.162 7.98004 17.232 6.97004 17.802 5.99004C17.952 5.73004 17.992 5.42004 17.912 5.12004C17.832 4.82004 17.642 4.58004 17.382 4.42004L15.652 3.43004C15.222 3.17004 14.652 3.32004 14.392 3.76004L14.282 3.95004C13.712 4.94004 12.882 5.50004 11.992 5.50004C11.102 5.50004 10.272 4.94004 9.70195 3.95004L9.59195 3.75004C9.34195 3.33004 8.78195 3.18004 8.35195 3.43004L6.62195 4.43004C6.36195 4.58004 6.16195 4.83004 6.08195 5.13004C6.00195 5.43004 6.04195 5.74004 6.19195 6.00004C6.76195 6.98004 6.83195 7.99004 6.39195 8.76004C5.95195 9.53004 5.04195 9.97004 3.90195 9.97004C3.26195 9.97004 2.75195 10.48 2.75195 11.12V12.88C2.75195 13.51 3.26195 14.03 3.90195 14.03C5.04195 14.03 5.95195 14.47 6.39195 15.24C6.83195 16.01 6.76195 17.02 6.19195 18C6.04195 18.26 6.00195 18.57 6.08195 18.87C6.16195 19.17 6.35195 19.41 6.61195 19.57L8.34195 20.56C8.55195 20.69 8.80195 20.72 9.03195 20.66C9.27195 20.6 9.47195 20.44 9.60195 20.23L9.71195 20.04C10.282 19.06 11.112 18.49 12.002 18.49Z" fill="#292D32"/>
-                </svg>
+            <button className="edit-profile-button" onClick={logOut}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11.9999 14C6.98991 14 2.90991 17.36 2.90991 21.5C2.90991 21.78 3.12991 22 3.40991 22H20.5899C20.8699 22 21.0899 21.78 21.0899 21.5C21.0899 17.36 17.0099 14 11.9999 14Z" fill="#292D32"/>
+            <path d="M16.8501 5.79996C16.7301 5.30996 16.5301 4.82996 16.2501 4.38996C16.0601 4.06996 15.8101 3.74996 15.5401 3.46996C14.6401 2.56996 13.4701 2.07996 12.2701 2.01996C10.9101 1.92996 9.52009 2.42996 8.47009 3.46996C7.48009 4.44996 6.98009 5.75996 7.00009 7.07996C7.01009 8.32996 7.51009 9.57996 8.46009 10.54C9.12009 11.2 9.93009 11.64 10.8001 11.84C11.2701 11.96 11.7701 12.02 12.2701 11.98C13.4601 11.93 14.6201 11.46 15.5301 10.54C16.8201 9.24996 17.2601 7.43996 16.8501 5.79996ZM14.0001 8.99996C13.6401 9.35996 13.0401 9.35996 12.6801 8.99996L11.9901 8.30996L11.3301 8.96996C10.9701 9.32996 10.3701 9.32996 10.0101 8.96996C9.64009 8.59996 9.64009 8.00996 10.0001 7.64996L10.6601 6.98996L10.0201 6.36996C9.66009 5.99996 9.66009 5.40996 10.0201 5.02996C10.3901 4.66996 10.9801 4.66996 11.3601 5.02996L11.9801 5.66996L12.6501 4.99996C13.0101 4.63996 13.6001 4.63996 13.9701 4.99996C14.3301 5.35996 14.3301 5.95996 13.9701 6.31996L13.3101 6.97996L14.0001 7.67996C14.3601 8.03996 14.3601 8.63996 14.0001 8.99996Z" fill="#292D32"/>
+            </svg>
             </button>
         </div>
         <div className="profile-page-top">
             <div className="profile-image-div">
                 <img className='profile-image' src={profileImg} alt="profile-image" />
-                <h className="profile-id">RezaJammshidi</h>
+                <h className="profile-id">{profileInfo.email}</h>
             </div>
             <hr className="profile-vertical-line" />
             <div className="profile-info-container">
                 <div className="profile-name-container">
-                    <p className='profile-name'>رضا جمشیدی</p>
+                    <p className='profile-name'>{profileInfo.full_name}</p>
                 </div>
                 <div className="profile-info-div">
                     <div className="profile-info">
-                        <h className="profile-info-digits">83</h>
+                        <h className="profile-info-digits">{favBooks.length}</h>
                         <a href="#" className="profile-info-link">Books</a>
                     </div>
                     <div className="profile-info">
-                        <h className="profile-info-digits">83</h>
+                        <h className="profile-info-digits">{profileInfo.followers_num}</h>
                         <Popup trigger={<button className="profile-info-button">Followers</button>}modal nested>
                             <div className="follow-main-div">
                                 <div className="follow-head-div">
@@ -76,7 +94,7 @@ function Profile() {
                         {/* <a href="#" className="profile-info-link">Followers</a> */}
                     </div>
                     <div className="profile-info">
-                        <h className="profile-info-digits">83</h>
+                        <h className="profile-info-digits">{profileInfo.following_num}</h>
                         <Popup trigger={<button className="profile-info-button">Following</button>}modal nested>
                             <div className="follow-main-div">
                                 <div className="follow-head-div">
@@ -111,78 +129,51 @@ function Profile() {
         <div className="profile-page-bottom">
             <div className="profile-bottom-sec">
                 <button className="profile-see-all-but">مشاهده کامل</button>
-                {favBooks.map((e,index)=>{ 
+                {favBooks.map((e,index)=>{
+                if(e.status==="برای خواندن"){
                 return(
                     <BookCard key={index}
-                image={e.image}
+                image={'https://'+e.image.slice(16)}
                 bookName={e.name}
                 authorName=' آلبر کامو'
                 id = {e.id}
                 />
-                );
+                );}
                 })}
-                <h className="profile-bottom-header">کتابخانه </h>
+                <h className="profile-bottom-header">می‌خواهم بخوانم</h>
                 
             </div>
 
             <div className="profile-finished-sec">
                 <button className="profile-see-all-but">مشاهده کامل</button>
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
+                {favBooks.map((e,index)=>{
+                if(e.status==="خوانده شده"){
+                return(
+                    <BookCard key={index}
+                image={'https://'+e.image.slice(16)}
+                bookName={e.name}
                 authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
+                id = {e.id}
+                />
+                );}
+                })}
                 <h className="profile-finished-header">خوانده‌شده  </h>
                 
             </div>
 
             <div className="profile-reading-sec">
                 <button className="profile-see-all-but">مشاهده کامل</button>
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
+                {favBooks.map((e,index)=>{
+                if(e.status==="درحال خواندن"){
+                return(
+                    <BookCard key={index}
+                image={'https://'+e.image.slice(16)}
+                bookName={e.name}
                 authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
-            <BookCard
-                image={sampleimg}
-                bookName='سقوط'
-                authorName=' آلبر کامو'
-            />
+                id = {e.id}
+                />
+                );}
+                })}
                 <h className="profile-reading-header">در حال مطالعه </h>
                 
             </div>

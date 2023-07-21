@@ -12,6 +12,7 @@ import Axios from "axios";
 function GenrePage() {
     const [searchValue, setSearchValue] = useState(sessionStorage.getItem('searchValue'));
     const [searchResult,setSearchResult] = useState([]);
+    const [book,setBook] = useState([]);
     const [state, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
     useEffect(()=>{
@@ -20,18 +21,50 @@ function GenrePage() {
     },[]);
 
     function handleSearch(){
-        const config = {
+        
+        let filter = '';
+        if (sessionStorage.getItem('histButton') == 'false'){
+            filter = filter + 'historical'+",";
+        }
+        if (sessionStorage.getItem('novelButton') == 'false'){
+            filter = filter + 'novel'+",";
+        }
+        if (sessionStorage.getItem('artButton') == 'false'){
+            filter = filter + 'art'+",";
+        }
+        if (sessionStorage.getItem('litButton') == 'false'){
+            filter = filter + 'lit'+",";
+        }
+        if (sessionStorage.getItem('philButton') == 'false'){
+            filter = filter + 'phil'+",";
+        }
+        if (sessionStorage.getItem('poetryButton') == 'false'){
+            filter = filter + 'poetry'+",";
+        }
+        const bookConfig = {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
-            params:{search:searchValue}     
+            params:{search:searchValue ,genres: filter}     
         }
         if (sessionStorage.getItem('token') === null){
             alert('please sign in before searching');
         }
         else{
-            Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+            Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", bookConfig
             ).then((res)=>{
-                    setSearchResult(res.data.data);
+                setSearchResult(res.data.data);
+                /*console.log(searchResult);
+                for(let i=0;i<searchResult.length;i++){
+                    let authorConfig = {
+                        headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
+                    }
+                    Axios.get(`http://127.0.0.1:8000/api/socialmedia/authors/${searchResult[i].id}`,authorConfig).then((res=>{
+                        searchResult[i].authorName = res.data.data[0].full_name;
+                    })).catch((err)=>{console.log(err)})/
+                }
+                setBook(...[searchResult]);*/                
             }).catch((err)=>{setSearchResult([])})
+            
+            
         }
         
     }
@@ -97,12 +130,12 @@ function GenrePage() {
         </div>
 
         <div className="genre-bookcard" >
-            {searchResult.map((e, index)=>{
+            {searchResult.map((e, index)=>{//console.log(e);
                 return(
                     <BookCard key={index}
                 image={e.image}
                 bookName={e.name}
-                authorName=' آلبر کامو'
+                authorName={e.authorName}
                 id = {e.id}
                 />
                 );
