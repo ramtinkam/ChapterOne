@@ -17,11 +17,10 @@ function App() {
   return (
     <div className="App">
 
-      {/* <GenrePage /> */}
-      <Profile />
 
 
-      {/* <Routes>
+
+      { <Routes>
       <Route path ="/" element={<Landing/>}></Route>
       <Route path ="login" element={<Login/>}></Route>
       <Route path ="signup" element={<SignUp/>}></Route>
@@ -30,8 +29,9 @@ function App() {
       <Route path ="author-page" element={<Author/>}></Route>
       <Route path ="genre-page" element={<GenrePage/>}></Route>
       <Route path ="profile" element={<Profile/>}></Route>
-      <Route path ="book" element={<Book/>}></Route>
-      </Routes> */}
+      <Route path ="book-page/:id" element={<Book/>}></Route>
+      </Routes> }
+
 
     </div>
   );

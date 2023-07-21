@@ -42,7 +42,7 @@ function BookCard(props) {
         </div>
             <div className="book-card-bottom">
                 <div className="book-card-name-div">
-                    <h className="book-card-name">{props.bookName}</h>
+                    <a className="book-card-name" href={`book-page/${props.id}`}>{props.bookName}</a>
                     <h className="book-card-author">نویسنده:{props.authorName} </h>
                 </div>
                 
