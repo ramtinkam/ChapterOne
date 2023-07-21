@@ -113,6 +113,25 @@
     line-height: normal;
 }
 
+.profile-info-button {
+    display: flex;
+    color: #2B2A71;
+    background-color: #F39F74;
+    text-align: center;
+    font-family: Estedad;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 5px;
+    border: 0;
+    padding: 0;
+}
+
+.profile-info-button:hover {
+    color: #7776dc;
+}
+
 .profile-info-link {
     color: #2B2A71;
     text-align: center;
@@ -122,10 +141,49 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
+    margin-bottom: 6px;
+
 }
 
 .profile-info-link:hover {
     color: #7776dc;
+}
+
+.follow-main-div {
+    display: flex;
+    width: 350px;
+    max-height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 10px;
+    background-color: #FFF;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    overflow: auto;
+    justify-content: center;
+}
+
+.follow-head-div {
+    display: flex;
+    background-color: #489FCB;
+    width: 350px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    margin-bottom: 10px;
+}
+
+.follow-header {
+    color: #FFF;
+    text-align: center;
+    font-family: Arial;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    
 }
 
 .profile-favorite-books {

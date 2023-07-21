@@ -19,6 +19,7 @@ function App() {
 
 
 
+
       { <Routes>
       <Route path ="/" element={<Landing/>}></Route>
       <Route path ="login" element={<Login/>}></Route>
@@ -30,6 +31,7 @@ function App() {
       <Route path ="profile" element={<Profile/>}></Route>
       <Route path ="book-page/:id" element={<Book/>}></Route>
       </Routes> }
+
 
     </div>
   );
