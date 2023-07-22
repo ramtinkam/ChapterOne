@@ -1,25 +1,50 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Author.css';
 import Navbar from './Navbar';
 import albertimg from './albertcamus.png';
 import BookCard from './BookCard';
 import sampleimg from './booksample.png';
 import Footer from './Footer';
+import { useParams } from 'react-router-dom';
+import Axios from "axios";
 
 function Author(props) {
+    const {id, bookId} = useParams();
+
+    const [authorInfo,setAuthorInfo] = useState([]);
+    function getAuthorInfo(){
+        const config = {
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
+            params:{id:Number(bookId)}     
+        }
+        Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+        ).then((res)=>{
+                setAuthorInfo(res.data.data[0].authors[0]);
+        }).catch((err)=>{
+        console.log(err);}
+        )
+    }
+
+
+    useEffect(()=>{
+        getAuthorInfo();
+
+    },[]);
+
   return (
     <div className='main-author-container'>
         <Navbar />
         <div className="author-div">
-            <h className="author-header">نویسندگان</h>
             <div className="author-main-info-div">
-                <h className="author-name">{props.author}</h>
+                <img className="author-img" src={'http://127.0.0.1:8000/media/'+authorInfo.image} alt="author-image" />
+                <div  className='author-bio-and-name'>
+                <h className="author-name">{authorInfo.full_name}</h>
                 <div className="author-bio-div">
                     <p className="author-bio">
-                        {props.authorBio}
+                        {authorInfo.biography}
                     </p>
                 </div>
-                <img className="author-img" src={props.authorImage} alt="author-image" />
+                </div>
             </div>
 
         </div>
