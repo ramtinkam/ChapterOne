@@ -121,7 +121,7 @@ function GenrePage() {
     // User is currently on this page
     const [currentPage, setCurrentPage] = useState(1);
     // No of Records to be displayed on each page   
-    const [recordsPerPage] = useState(20);
+    const [recordsPerPage] = useState(36);
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = searchResult.slice(indexOfFirstRecord, 

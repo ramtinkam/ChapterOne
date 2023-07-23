@@ -237,6 +237,8 @@
     margin-right: 20px;
     align-items: center;
     margin-bottom: 50px;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .profile-bottom-header {
@@ -277,6 +279,9 @@
     margin-right: 20px;
     align-items: center;
     margin-bottom: 50px;
+    width: 100%;
+    overflow-x: scroll;
+    
 }
 
 .profile-finished-header {
@@ -295,6 +300,9 @@
     margin-right: 20px;
     align-items: center;
     margin-bottom: 70px;
+    width: 100%;
+    justify-content: flex-end;
+
 }
 
 .profile-reading-header {

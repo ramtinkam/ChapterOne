@@ -18,7 +18,7 @@ function Searchbox() {
     <div className='main-searchbox'>
       <img className="searchbox-img" src={image} alt="library-img" />
       <div className="line"></div>
-      <h className="search-header">!با کتاب خوان، کتاب بخوان</h>
+      <h className="search-header">!با  چپتر وان، کتاب بخوان</h>
       <p className="search-text">
       کتاب‌ها، سفرهایی هستند که درونشان در دنیایی جدید غرق می‌شوی. بیا، همین حالا بگذار"
       <br />

@@ -175,15 +175,15 @@ function Book(props) {
 
                 </div>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={props.translatorImage} alt="translator-image" />
+                    {/*<img className="book-page-middle-img" src={props.translatorImage} alt="translator-image" />
                     <h className="book-page-middle-header">:مترجم</h>
-                    <h className="book-page-middle-name">{props.translatorName}</h>
+                    <h className="book-page-middle-name">{props.translatorName}</h>*/}
 
                 </div>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" src={props.publisherImage} alt="publisher-image" />
+                    {/*<img className="book-page-middle-img" src={props.publisherImage} alt="publisher-image" />
                     <h className="book-page-middle-header">:انتشارات</h>
-                    <h className="book-page-middle-name">{props.publisherName}</h>
+                <h className="book-page-middle-name">{props.publisherName}</h>*/}
 
                 </div>
                 <div className="book-page-star-rating">
@@ -199,7 +199,7 @@ function Book(props) {
                     
                 </div>
                 <div className="book-page-star-info">
-                    <p className="book-page-rate-info">{props.rateNumber}</p>
+                    <p className="book-page-rate-info">{bookInfo.average_rating}</p>
                     <hr className="book-page-line" />
                     <p className='book-page-rate-info'>{4}</p>
                     <p className="book-page-rate-info">نمره</p>
