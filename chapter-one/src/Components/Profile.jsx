@@ -118,12 +118,12 @@ function Profile() {
             <hr className="profile-vertical-line" />
             <div className="profile-favorite-books">
                 <div className="profile-favorite-books-imgs">
-                    <img className="profile-sample-book" src={book1} alt="" />
-                    <img className="profile-sample-book" src={book2} alt="" />
-                    <img className="profile-sample-book" src={book3} alt="" />
-                    <img className="profile-sample-book" src={book4} alt="" />
+                    {favBooks.toReversed().slice(0,4).map((e)=>{return(
+                        <img className="profile-sample-book" src={'https://'+e.image.slice(16)} alt="" />
+                        )
+                    })}
                 </div>
-                <h className="profile-favorite-books-header">کتاب‌های مورد علاقه</h>
+                <h className="profile-favorite-books-header">کتاب‌های اخیر</h>
             </div>
         </div>
         <div className="profile-page-bottom">
