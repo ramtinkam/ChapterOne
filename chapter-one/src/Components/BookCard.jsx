@@ -88,8 +88,8 @@ function BookCard(props) {
         </div>
             <div className="book-card-bottom">
                 <div className="book-card-name-div">
-                    <a className="book-card-name" href={`book-page/${props.id}`}>{props.bookName}</a>
-                    <a className="book-card-author" href={`author-page/${props.authorId}/${props.id}`}>{props.authorName} </a>
+                    <a className="book-card-name" href={`/book-page/${props.id}`}>{props.bookName}</a>
+                    <a className="book-card-author" href={`/author-page/${props.authorId}/${props.id}`}>{props.authorName} </a>
                 </div>
                 
             </div>

@@ -52,6 +52,7 @@
 
 .comment-section {
     text-align: justify;
+    margin:0px;
     direction:rtl;
     color: #3D5B81;
     font-family: Estedad;
@@ -62,3 +63,4 @@
     background-color: rgb(188, 244, 246);
     width: 1450px;
 }
+

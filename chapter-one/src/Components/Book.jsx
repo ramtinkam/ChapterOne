@@ -24,7 +24,7 @@ function Book(props) {
         }
         Axios.get(`http://127.0.0.1:8000/api/socialmedia/books/rating/${params.id}`, config
         ).then((res)=>{
-            setDefaultRating(res.data.rating);
+            setDefaultRating(res.data.data.rating);
         }).catch((err)=>{
         setDefaultRating(0);
         console.log(err);}
@@ -135,7 +135,7 @@ function Book(props) {
                 headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
             }
             Axios.post("http://127.0.0.1:8000/api/socialmedia/comments/add/",{"text": comment,"book_id": bookInfo.id,
-            'parent_comment':null},config
+            },config
             ).then((res)=>{console.log(res)
             setComment('')}).catch((err)=>{
                 console.log(err);}
@@ -151,7 +151,7 @@ function Book(props) {
         Axios.get(`http://127.0.0.1:8000/api/socialmedia/comments/get/${params.id}`, config
         ).then((res)=>{
             console.log(res.data);
-            setCommentArray(res.data);
+            setCommentArray(res.data.data);
         }).catch((err)=>{
         console.log(err);}
         )

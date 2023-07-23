@@ -36,7 +36,7 @@ function Profile() {
     function getProfileInfo(){
         Axios.get(`http://127.0.0.1:8000/api/user/getprofile/${sessionStorage.getItem('userId')}/`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then((res)=>{
-            setProfileInfo(res.data);
+            setProfileInfo(res.data.data);
         })
     }
 
@@ -128,7 +128,8 @@ function Profile() {
         </div>
         <div className="profile-page-bottom">
             <div className="profile-bottom-sec">
-                <button className="profile-see-all-but">مشاهده کامل</button>
+            <div className='favbooks-sec'>
+                {/*<button className="profile-see-all-but">مشاهده کامل</button>*/}
                 {favBooks.map((e,index)=>{
                 if(e.status==="برای خواندن"){
                 return(
@@ -136,17 +137,20 @@ function Profile() {
                 image={'https://'+e.image.slice(16)}
                 bookName={e.name}
                 avgRate ={e.average_rating}
-                authorName=' آلبر کامو'
+                authorName={" "+e.authors[0].full_name}
+                authorId = {e.authors[0].id}
                 id = {e.id}
                 />
                 );}
                 })}
+                </div>
                 <h className="profile-bottom-header">می‌خواهم بخوانم</h>
                 
             </div>
 
             <div className="profile-finished-sec">
-                <button className="profile-see-all-but">مشاهده کامل</button>
+            <div className='favbooks-sec'>
+                {/*<button className="profile-see-all-but">مشاهده کامل</button>*/}
                 {favBooks.map((e,index)=>{
                 if(e.status==="خوانده شده"){
                 return(
@@ -154,17 +158,20 @@ function Profile() {
                 image={'https://'+e.image.slice(16)}
                 avgRate ={e.average_rating}
                 bookName={e.name}
-                authorName=' آلبر کامو'
+                authorName={" "+e.authors[0].full_name}
+                authorId = {e.authors[0].id}
                 id = {e.id}
                 />
                 );}
                 })}
+                </div>
                 <h className="profile-finished-header">خوانده‌شده  </h>
                 
             </div>
 
             <div className="profile-reading-sec">
-                <button className="profile-see-all-but">مشاهده کامل</button>
+                <div className='favbooks-sec'>
+                {/*<button className="profile-see-all-but">مشاهده کامل</button>*/}
                 {favBooks.map((e,index)=>{
                 if(e.status==="درحال خواندن"){
                 return(
@@ -172,11 +179,13 @@ function Profile() {
                 image={'https://'+e.image.slice(16)}
                 avgRate ={e.average_rating}
                 bookName={e.name}
-                authorName=' آلبر کامو'
+                authorName={" "+e.authors[0].full_name}
+                authorId = {e.authors[0].id}
                 id = {e.id}
                 />
                 );}
                 })}
+                </div>
                 <h className="profile-reading-header">در حال مطالعه </h>
                 
             </div>
