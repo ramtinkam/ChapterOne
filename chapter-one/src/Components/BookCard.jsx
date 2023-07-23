@@ -34,7 +34,8 @@ function BookCard(props) {
             (res)=>{
                 console.log(res);
                 setFavBooks(res.data.data);
-        }).catch((err)=>{console.log(err)});}
+        }).catch((err)=>{console.log(err)
+        setFavBooks([])});}
 
     useEffect(()=>{
         getFavBooks();

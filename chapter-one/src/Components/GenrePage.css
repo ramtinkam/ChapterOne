@@ -113,9 +113,11 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
     padding-top: 100px;
+    justify-content: center;
 }
 
 .genre-page-navigation {
+    align-items: center;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -133,6 +135,7 @@
 
 .genre-pages:hover, .genre-page-back-text:hover, .genre-page-forward-text:hover{
     color: #F39F74;
+    cursor: pointer;
 }
 
 .genre-page-back-text {

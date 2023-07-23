@@ -56,7 +56,8 @@ function Book(props) {
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
             (res)=>{
                 setFavBooks(res.data.data);
-        }).catch((err)=>{console.log(err)});}
+        }).catch((err)=>{console.log(err)
+            setFavBooks([])});}
 
 
     function addWillRead(){
@@ -135,7 +136,10 @@ function Book(props) {
             }
             Axios.post("http://127.0.0.1:8000/api/socialmedia/comments/add/",{"text": comment,"book_id": bookInfo.id,
             'parent_comment':null},config
-            ).then((res)=>{console.log(res)})
+            ).then((res)=>{console.log(res)
+            setComment('')}).catch((err)=>{
+                console.log(err);}
+                )
         }
     }
 
@@ -164,9 +168,10 @@ function Book(props) {
             <div className="book-middle-div">
                 <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">
-                    <img className="book-page-middle-img" alt="author-image" />
+                    <img className="book-page-middle-img" alt="author-image" 
+                    src={'http://127.0.0.1:8000/media/'+authorInfo.image} />
                     <h className="book-page-middle-header">:نویسنده</h>
-                    <h className="book-page-middle-name">{authorInfo.full_name}</h>
+                    <a className="book-page-middle-name" href={`/author-page/${authorInfo.id}/${bookInfo.id}`}>{authorInfo.full_name}</a>
 
                 </div>
                 <div className="book-middle-info-div">
@@ -225,7 +230,7 @@ function Book(props) {
                 </select> */}
                 <div className="book-comment">
                     {/* <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" /> */}
-                    <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment"
+                    <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" value={comment}
                     onChange={(e)=>{setComment(e.target.value)}} />
                     <button className="book-commit-comment" onClick={addComment}>ثبت نظر</button>
                     <div className="book-page-user-rate">
