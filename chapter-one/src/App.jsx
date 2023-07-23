@@ -26,7 +26,7 @@ function App() {
       <Route path ="signup" element={<SignUp/>}></Route>
       <Route path ="forgot-password" element={<ForgotPassword/>}></Route>
       <Route path ="pass-recovery" element={<PassRecovery/>}></Route>
-      <Route path ="author-page" element={<Author/>}></Route>
+      <Route path ="author-page/:id/:bookId" element={<Author/>}></Route>
       <Route path ="genre-page" element={<GenrePage/>}></Route>
       <Route path ="profile" element={<Profile/>}></Route>
       <Route path ="book-page/:id" element={<Book/>}></Route>

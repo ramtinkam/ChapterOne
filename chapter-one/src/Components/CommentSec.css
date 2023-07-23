@@ -8,8 +8,9 @@
 }
 
 .comment-user-info {
+    align-items: center;
     display: flex;
-    width: 450px;
+    width: 200px;
     height: 50px;
     background-color: #F39F74;
     flex-direction: row-reverse;
@@ -26,9 +27,9 @@
 .comment-sec-user-id {
     color: #3C5A80;
     font-family: Arial;
-    font-size: 15px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
     margin-right: 10px;
 }

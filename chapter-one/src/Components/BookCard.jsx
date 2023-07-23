@@ -1,41 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './BookCard.css';
 import Axios from "axios";
+import Popup from 'reactjs-popup'
+import StarRating from './StarRating';
+import {Rating} from 'react-simple-star-rating'
+
 
 
 function BookCard(props) {
-    
-    function handleAddBook(){
+    const [favBooks,setFavBooks] = useState([]);
+    function popupFunc(){
+        let flg =false
+        favBooks.forEach(e => {
+            if(e.id === props.id){flg=true}
+        })
+        if (flg==false){
+        return(
+            <div>
+            <button className="book-popup-buttons" onClick={addWillRead}>می‌خواهم بخوانم</button>
+            <button className="book-popup-buttons" onClick={addReading}>در حال مطالعه</button>
+            <button className="book-popup-buttons" onClick={addRead}>خوانده شده</button>
+            </div>
+        )}
+        else{
+            return(
+                <button className="book-popup-buttons" onClick={addWillRead}>حذف کتاب</button>
+            )
+        }}
 
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id},
+    function getFavBooks(){
+        Axios.get(`http://127.0.0.1:8000/api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
+            (res)=>{
+                console.log(res);
+                setFavBooks(res.data.data);
+        }).catch((err)=>{console.log(err)
+        setFavBooks([])});}
+
+    useEffect(()=>{
+        getFavBooks();
+    },[]);
+    
+    function addWillRead(){
+        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'برای خواندن'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
+                    getFavBooks();
+            }).catch((err)=>{console.log(err)});
+    }
+    function addReading(){
+        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'درحال خواندن'},
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
+            ).then((res)=>{
+                    console.log(res);
+                    getFavBooks();
+            }).catch((err)=>{console.log(err)});
+    }
+    function addRead(){
+        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'خوانده شده'},
+        {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
+            ).then((res)=>{
+                    console.log(res);
+                    getFavBooks();
             }).catch((err)=>{console.log(err)});
     }
 
 
 
+
   return (
     <div className='book-card' >
+        <Rating
+                initialValue={props.avgRate}
+                readonly={true}
+                size={20}
+                allowFraction={true}
+                fillColor='#F39F74'
+                emptyColor='gray'
+                className='foo' // Will remove the inline style if applied
+                />
         <div className='book-card-top'>
-            <div className='book-card-rate-box'>
-                <svg className='book-card-rate' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.00042 0.285713L10.3841 5.11486L15.7147 5.894L11.8576 9.65086L12.7678 14.9583L8.00042 12.4511L3.23299 14.9583L4.14328 9.65086L0.286133 5.894L5.6167 5.11486L8.00042 0.285713Z" fill="#FFF737"/>
-                </svg>
-                <svg className='book-card-rate' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.00042 0.285713L10.3841 5.11486L15.7147 5.894L11.8576 9.65086L12.7678 14.9583L8.00042 12.4511L3.23299 14.9583L4.14328 9.65086L0.286133 5.894L5.6167 5.11486L8.00042 0.285713Z" fill="#FFF737"/>
-                </svg>
-                <svg className='book-card-rate' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.00042 0.285713L10.3841 5.11486L15.7147 5.894L11.8576 9.65086L12.7678 14.9583L8.00042 12.4511L3.23299 14.9583L4.14328 9.65086L0.286133 5.894L5.6167 5.11486L8.00042 0.285713Z" fill="#FFF737"/>
-                </svg>
-                <svg width="16" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.00042 1.82139L9.95179 5.77466C10.022 5.91682 10.1575 6.0154 10.3144 6.03833L14.6789 6.67626L11.5212 9.75186C11.4074 9.86263 11.3555 10.0223 11.3824 10.1788L12.1275 14.5232L8.22483 12.4708C8.08434 12.3969 7.91649 12.3969 7.776 12.4708L3.87336 14.5232L4.61848 10.1788C4.64532 10.0223 4.59341 9.86263 4.47968 9.75186L1.32197 6.67626L5.68644 6.03833C5.8433 6.0154 5.97887 5.91682 6.04905 5.77466L8.00042 1.82139Z" stroke="#727272" stroke-width="0.964286" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <svg width="16" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.00042 1.82139L9.95179 5.77466C10.022 5.91682 10.1575 6.0154 10.3144 6.03833L14.6789 6.67626L11.5212 9.75186C11.4074 9.86263 11.3555 10.0223 11.3824 10.1788L12.1275 14.5232L8.22483 12.4708C8.08434 12.3969 7.91649 12.3969 7.776 12.4708L3.87336 14.5232L4.61848 10.1788C4.64532 10.0223 4.59341 9.86263 4.47968 9.75186L1.32197 6.67626L5.68644 6.03833C5.8433 6.0154 5.97887 5.91682 6.04905 5.77466L8.00042 1.82139Z" stroke="#727272" stroke-width="0.964286" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
+         
             <div className="book-card-img-container">
                 <img className="book-card-sample-img" src={props.image} alt="book-image" />
             </div>
@@ -43,12 +89,23 @@ function BookCard(props) {
             <div className="book-card-bottom">
                 <div className="book-card-name-div">
                     <a className="book-card-name" href={`book-page/${props.id}`}>{props.bookName}</a>
-                    <h className="book-card-author">نویسنده:{props.authorName} </h>
+                    <a className="book-card-author" href={`author-page/${props.authorId}/${props.id}`}>نویسنده:{props.authorName} </a>
                 </div>
                 
             </div>
-            <div className="book-card-button">
-                <button className="book-card-add-library" onClick={handleAddBook}>افزودن به کتابخانه </button>
+            <div className="book-card-button"><Popup closeByBackdropClick={true} 
+                trigger={<button className="book-card-add-library">افزودن به کتابخانه </button>}modal nested>
+                    <div className="book-popup-main-div">
+                        <div className="book-popup-close-div">
+                            <h className="book-popup-header">:قفسه مورد نظرتان را انتخاب کنید</h>
+                        </div>
+                        {
+                            popupFunc()
+                        }
+                        
+                    </div>
+                </Popup>
+                
             </div>
 
     </div>

@@ -10,7 +10,6 @@ function CommentSec(props) {
             <img className="comment-user-profile-pic" src={props.profileImg} alt="" />
             <p className="comment-sec-user-id">{props.userId}</p>
             <div className="comment-sec-rating">
-                <StarRating />
             </div>
             
         </div>
