@@ -12,7 +12,7 @@ function StarRating(props) {
         headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
         
       }
-      Axios.post("http://127.0.0.1:8000/api/socialmedia/rate-books/",{"book_id": bookId,"rating": rating},config
+      Axios.post("api/socialmedia/rate-books/",{"book_id": bookId,"rating": rating},config
         ).then((res)=>{console.log(res)})
     }
 

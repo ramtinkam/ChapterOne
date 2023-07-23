@@ -50,7 +50,7 @@ function GenrePage() {
             alert('please sign in before searching');
         }
         else{
-            Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", bookConfig
+            Axios.get("api/socialmedia/getbooks/", bookConfig
             ).then((res)=>{
                 setSearchResult(res.data.data);
                 /*console.log(searchResult);
@@ -58,7 +58,7 @@ function GenrePage() {
                     let authorConfig = {
                         headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
                     }
-                    Axios.get(`http://127.0.0.1:8000/api/socialmedia/authors/${searchResult[i].id}`,authorConfig).then((res=>{
+                    Axios.get(`api/socialmedia/authors/${searchResult[i].id}`,authorConfig).then((res=>{
                         searchResult[i].authorName = res.data.data[0].full_name;
                     })).catch((err)=>{console.log(err)})/
                 }

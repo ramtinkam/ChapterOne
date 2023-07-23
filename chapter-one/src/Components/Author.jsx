@@ -19,7 +19,7 @@ function Author(props) {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
             params:{id:Number(bookId)}     
         }
-        Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+        Axios.get("api/socialmedia/getbooks/", config
         ).then((res)=>{
                 setAuthorInfo(res.data.data[0].authors[0]);
         }).catch((err)=>{
@@ -31,7 +31,7 @@ function Author(props) {
         const config = {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}, 
         }
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/books-by-author/${id}/`, config
+        Axios.get(`api/socialmedia/books-by-author/${id}/`, config
         ).then((res)=>{
                 SetAuthorBooks(res.data.data);
         }).catch((err)=>{
@@ -111,7 +111,7 @@ function Author(props) {
         <Navbar />
         <div className="author-div">
             <div className="author-main-info-div">
-                <img className="author-img" src={'http://127.0.0.1:8000/media/'+authorInfo.image} alt="author-image" />
+                <img className="author-img" src={'media/'+authorInfo.image} alt="author-image" />
                 <div  className='author-bio-and-name'>
                 <h className="author-name">{authorInfo.full_name}</h>
                 <div className="author-bio-div">

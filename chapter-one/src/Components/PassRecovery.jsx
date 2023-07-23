@@ -21,7 +21,7 @@ function PassRecovery() {
                 get: (searchParams, prop) => searchParams.get(prop),
               });
             const token = params.token; 
-            Axios.post("http://127.0.0.1:8000/api/password-reset/confirm/",{ password:password,token:token }).then(
+            Axios.post("api/password-reset/confirm/",{ password:password,token:token }).then(
             (response) => {
                 console.log(response);
             window.location.href = "/login"

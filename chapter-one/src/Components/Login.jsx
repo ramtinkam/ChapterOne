@@ -14,13 +14,14 @@ function Login() {
           console.log('empty fields');
         }
         else {
-         Axios.post("http://127.0.0.1:8000/api/user/signin/",{ email: email, password:password }).then(
+         Axios.post("api/user/signin/",{ email: email, password:password }).then(
           (response) => {
           const data = response.data.data;
           sessionStorage.setItem('token',data.token.slice(5));
           sessionStorage.setItem('userId',data.userId);
           window.location.href = "/"
-        }).catch((err)=>{console.log(err)})
+        }).catch((err)=>{console.log(err)
+        alert('error try again')})
         }
 
   };

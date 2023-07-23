@@ -16,7 +16,7 @@ export const ForgotPassword = () => {
           console.log('error');
         }
         else {
-         Axios.post("http://127.0.0.1:8000/api/password-reset/",{ email: email}).then(
+         Axios.post("api/password-reset/",{ email: email}).then(
           (response) => {
           console.log(response);
           window.location.href = "/pass-recovery"

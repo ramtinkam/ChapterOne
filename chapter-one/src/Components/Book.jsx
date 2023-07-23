@@ -22,7 +22,7 @@ function Book(props) {
         const config = {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}    
         }
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/books/rating/${params.id}`, config
+        Axios.get(`api/socialmedia/books/rating/${params.id}`, config
         ).then((res)=>{
             setDefaultRating(res.data.data.rating);
         }).catch((err)=>{
@@ -52,7 +52,7 @@ function Book(props) {
             )
         }}
     function getFavBooks(){
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
+        Axios.get(`api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
             (res)=>{
                 setFavBooks(res.data.data);
@@ -61,7 +61,7 @@ function Book(props) {
 
 
     function addWillRead(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'برای خواندن'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'برای خواندن'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
@@ -69,7 +69,7 @@ function Book(props) {
             }).catch((err)=>{console.log(err)});
     }
     function addReading(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'درحال خواندن'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'درحال خواندن'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
@@ -77,7 +77,7 @@ function Book(props) {
             }).catch((err)=>{console.log(err)});
     }
     function addRead(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'خوانده شده'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":bookInfo.id, "status":'خوانده شده'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
@@ -92,7 +92,7 @@ function Book(props) {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')},
             params:{id:Number(param.id)}     
         }
-        Axios.get("http://127.0.0.1:8000/api/socialmedia/getbooks/", config
+        Axios.get("api/socialmedia/getbooks/", config
         ).then((res)=>{
                 setBookInfo(res.data.data[0]);
                 setAuthorInfo(res.data.data[0].authors[0]);
@@ -121,7 +121,7 @@ function Book(props) {
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
             
           }
-          Axios.post("http://127.0.0.1:8000/api/socialmedia/rate-books/",{"book_id": bookInfo.id,"rating": rate},config
+          Axios.post("api/socialmedia/rate-books/",{"book_id": bookInfo.id,"rating": rate},config
             ).then((res)=>{console.log(res)})
     }
 
@@ -134,7 +134,7 @@ function Book(props) {
             const config ={
                 headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
             }
-            Axios.post("http://127.0.0.1:8000/api/socialmedia/comments/add/",{"text": comment,"book_id": bookInfo.id,
+            Axios.post("api/socialmedia/comments/add/",{"text": comment,"book_id": bookInfo.id,
             },config
             ).then((res)=>{console.log(res)
             setComment('')}).catch((err)=>{
@@ -148,7 +148,7 @@ function Book(props) {
         const config ={
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
         }
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/comments/get/${params.id}`, config
+        Axios.get(`api/socialmedia/comments/get/${params.id}`, config
         ).then((res)=>{
             console.log(res.data);
             setCommentArray(res.data.data);
@@ -169,7 +169,7 @@ function Book(props) {
                 <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">
                     <img className="book-page-middle-img" alt="author-image" 
-                    src={'http://127.0.0.1:8000/media/'+authorInfo.image} />
+                    src={'media/'+authorInfo.image} />
                     <h className="book-page-middle-header">:نویسنده</h>
                     <a className="book-page-middle-name" href={`/author-page/${authorInfo.id}/${bookInfo.id}`}>{authorInfo.full_name}</a>
 

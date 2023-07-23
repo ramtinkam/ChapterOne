@@ -25,7 +25,7 @@ function Profile() {
         window.location.href='/';
     }
     function getFavBooks(){
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
+        Axios.get(`api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
             (res)=>{
                 console.log(res);
@@ -34,7 +34,7 @@ function Profile() {
     }
 
     function getProfileInfo(){
-        Axios.get(`http://127.0.0.1:8000/api/user/getprofile/${sessionStorage.getItem('userId')}/`,
+        Axios.get(`api/user/getprofile/${sessionStorage.getItem('userId')}/`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then((res)=>{
             setProfileInfo(res.data.data);
         })

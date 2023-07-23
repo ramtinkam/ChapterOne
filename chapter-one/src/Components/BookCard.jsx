@@ -29,7 +29,7 @@ function BookCard(props) {
         }}
 
     function getFavBooks(){
-        Axios.get(`http://127.0.0.1:8000/api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
+        Axios.get(`api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
             (res)=>{
                 console.log(res);
@@ -42,7 +42,7 @@ function BookCard(props) {
     },[]);
     
     function addWillRead(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'برای خواندن'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'برای خواندن'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
@@ -50,7 +50,7 @@ function BookCard(props) {
             }).catch((err)=>{console.log(err)});
     }
     function addReading(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'درحال خواندن'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'درحال خواندن'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
@@ -58,7 +58,7 @@ function BookCard(props) {
             }).catch((err)=>{console.log(err)});
     }
     function addRead(){
-        Axios.put("http://127.0.0.1:8000/api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'خوانده شده'},
+        Axios.put("api/socialmedia/toggle-favorite-book/",{"book_id":props.id, "status":'خوانده شده'},
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}
             ).then((res)=>{
                     console.log(res);
