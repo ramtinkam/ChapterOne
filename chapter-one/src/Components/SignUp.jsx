@@ -25,7 +25,7 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === '' || email === '' || password === '' || checkbox === false) {
-            console.log("empty fields");}
+            alert("empty fields");}
         else {
            Axios.post("api/user/signup/",{ email: email, fullname:username, password:password }).then(
             (response) => {
@@ -34,7 +34,7 @@ const SignUp = () => {
             sessionStorage.setItem('userId',data.userId);
             window.location.href = "/"
           }).catch((err)=>{console.log(err)
-        alert('error try again')});
+        alert('Password must be at least 8 characters long and must contain at least one uppercase letter and one lowercase letter.')});
         }
     };
 

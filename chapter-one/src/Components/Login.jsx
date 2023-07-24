@@ -11,7 +11,7 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();    
         if (email === '' || password === '') {
-          console.log('empty fields');
+          alert('empty fields');
         }
         else {
          Axios.post("api/user/signin/",{ email: email, password:password }).then(

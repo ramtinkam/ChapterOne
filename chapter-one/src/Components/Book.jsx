@@ -108,6 +108,7 @@ function Book(props) {
         getBookRating();
         getFavBooks();
         getComments();
+        getRatingNum();
 
     },[]);
 
@@ -148,7 +149,7 @@ function Book(props) {
         const config ={
             headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
         }
-        Axios.get(`api/socialmedia/comments/get/${params.id}`, config
+        Axios.get(`api/socialmedia/comment/get/${params.id}/`, config
         ).then((res)=>{
             console.log(res.data);
             setCommentArray(res.data.data);
@@ -157,6 +158,21 @@ function Book(props) {
         )
     }
     
+    const [ratingNum,setRatingNum]=useState(0);
+
+    function getRatingNum(){
+        const config ={
+            headers: {Authorization : "Token "+ sessionStorage.getItem('token')}
+        }
+        Axios.get(`/api/socialmedia/rating/count/${params.id}`, config
+        ).then((res)=>{
+            console.log(res);
+            setRatingNum(res.data.data);
+        }).catch((err)=>{
+        console.log(err)
+        setRatingNum(0);}
+        )
+    }
 
   return (
     <div className='book-main-container'>
@@ -201,7 +217,7 @@ function Book(props) {
                 <div className="book-page-star-info">
                     <p className="book-page-rate-info">{bookInfo.average_rating}</p>
                     <hr className="book-page-line" />
-                    <p className='book-page-rate-info'>{4}</p>
+                    <p className='book-page-rate-info'>{ratingNum}</p>
                     <p className="book-page-rate-info">نمره</p>
                     <hr className="book-page-line" />
                     <p className='book-page-rate-info'>{commentArray.length}</p>

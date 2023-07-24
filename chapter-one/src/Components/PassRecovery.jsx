@@ -14,7 +14,7 @@ function PassRecovery() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (password != confirmPassword || password === '' || confirmPassword === ''){
-            console.log('error');
+            alert('passwords do not match');
         }
         else{
             const params = new Proxy(new URLSearchParams(window.location.search), {

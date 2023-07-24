@@ -13,7 +13,7 @@ export const ForgotPassword = () => {
         e.preventDefault();
         try{      
         if (email === '') {
-          console.log('error');
+          alert('empty fields');
         }
         else {
          Axios.post("api/password-reset/",{ email: email}).then(
