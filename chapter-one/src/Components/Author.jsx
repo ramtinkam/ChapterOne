@@ -111,7 +111,7 @@ function Author(props) {
         <Navbar />
         <div className="author-div">
             <div className="author-main-info-div">
-                <img className="author-img" src={'media/'+authorInfo.image} alt="author-image" />
+                <img className="author-img" src={'http://api.chapterone.kveh.ir/media/'+authorInfo.image} alt="author-image" />
                 <div  className='author-bio-and-name'>
                 <h className="author-name">{authorInfo.full_name}</h>
                 <div className="author-bio-div">

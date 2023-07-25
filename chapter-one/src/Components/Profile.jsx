@@ -134,7 +134,7 @@ function Profile() {
                 if(e.status==="برای خواندن"){
                 return(
                     <BookCard key={index}
-                image={'media/'+e.image}
+                image={'http://api.chapterone.kveh.ir'+e.image}
                 bookName={e.name}
                 avgRate ={e.average_rating}
                 authorName={" "+e.authors[0].full_name}

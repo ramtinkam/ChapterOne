@@ -180,12 +180,12 @@ function Book(props) {
             <Navbar />
         </div>
         <div className="book-info-div">
-            <img className="book-page-img" src={'media/'+bookInfo.image} alt="the-book-image" />
+            <img className="book-page-img" src={'http://api.chapterone.kveh.ir/media/'+bookInfo.image} alt="the-book-image" />
             <div className="book-middle-div">
                 <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">
                     <img className="book-page-middle-img" alt="author-image" 
-                    src={'media/'+authorInfo.image} />
+                    src={'http://api.chapterone.kveh.ir/media/'+authorInfo.image} />
                     <h className="book-page-middle-header">:نویسنده</h>
                     <a className="book-page-middle-name" href={`/author-page/${authorInfo.id}/${bookInfo.id}`}>{authorInfo.full_name}</a>
 

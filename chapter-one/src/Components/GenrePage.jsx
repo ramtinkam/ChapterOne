@@ -165,7 +165,7 @@ function GenrePage() {
             {currentRecords.map((e, index)=>{//console.log(e);
                 return(
                     <BookCard key={index}
-                image={'media/'+e.image}
+                image={'http://api.chapterone.kveh.ir/media/'+e.image}
                 bookName={e.name}
                 authorName={" "+e.authors[0].full_name}
                 authorId = {e.authors[0].id}
