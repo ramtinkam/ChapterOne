@@ -139,7 +139,7 @@ function Author(props) {
             {authorBooks.map((e, index)=>{//console.log(e);
                 return(
                 <BookCard key={index}
-                image={e.image}
+                image={'http://api.chapterone.kveh.ir/media/'+e.image}
                 bookName={e.name}
                 authorName={" "+authorInfo.full_name}
                 authorId = {id}

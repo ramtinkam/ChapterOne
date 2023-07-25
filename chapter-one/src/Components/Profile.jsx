@@ -119,7 +119,7 @@ function Profile() {
             <div className="profile-favorite-books">
                 <div className="profile-favorite-books-imgs">
                     {favBooks.toReversed().slice(0,4).map((e)=>{return(
-                        <img className="profile-sample-book" src={'https://'+e.image.slice(16)} alt="" />
+                        <img className="profile-sample-book" src={'http://api.chapterone.kveh.ir'+e.image} alt="" />
                         )
                     })}
                 </div>
