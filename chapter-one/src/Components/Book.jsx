@@ -180,7 +180,7 @@ function Book(props) {
             <Navbar />
         </div>
         <div className="book-info-div">
-            <img className="book-page-img" src={bookInfo.image} alt="the-book-image" />
+            <img className="book-page-img" src={'media/'+bookInfo.image} alt="the-book-image" />
             <div className="book-middle-div">
                 <h className="book-page-name">{bookInfo.name}</h>
                 <div className="book-middle-info-div">

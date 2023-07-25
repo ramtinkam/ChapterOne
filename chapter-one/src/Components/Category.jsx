@@ -15,7 +15,7 @@ function Category() {
     const [histButton,setHistButton] = useState(false);
 
     function handleHisClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{
@@ -29,7 +29,7 @@ function Category() {
     const [novelButton,setNovelButton] = useState(false);
 
     function handleNovelClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{
@@ -44,7 +44,7 @@ function Category() {
     const [poetryButton,setPoetrybutton] = useState(false);
 
     function handlePoetryClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{
@@ -58,7 +58,7 @@ function Category() {
     const [artButton,setArtButton] = useState(false);
 
     function handleArtClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{
@@ -72,7 +72,7 @@ function Category() {
     const [philButton,setPhilButton] = useState(false);
 
     function handlePhilClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{
@@ -86,7 +86,7 @@ function Category() {
     const [litButton,setLitButton] = useState(false);
 
     function handleLitClick() {
-            if(window.location.href == 'http://localhost:3000/'){
+            if(window.location.pathname == '/'){
                 window.location.href = '/genre-page';
             }
             else{

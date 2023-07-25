@@ -25,10 +25,10 @@ function GenrePage() {
         
         let filter = '';
         if (sessionStorage.getItem('histButton') == 'false'){
-            filter = filter + 'historical'+",";
+            filter = filter + 'تاریخی'+",";
         }
         if (sessionStorage.getItem('novelButton') == 'false'){
-            filter = filter + 'novel'+",";
+            filter = filter + 'رمان'+",";
         }
         if (sessionStorage.getItem('artButton') == 'false'){
             filter = filter + 'art'+",";
@@ -165,7 +165,7 @@ function GenrePage() {
             {currentRecords.map((e, index)=>{//console.log(e);
                 return(
                     <BookCard key={index}
-                image={e.image}
+                image={'media/'+e.image}
                 bookName={e.name}
                 authorName={" "+e.authors[0].full_name}
                 authorId = {e.authors[0].id}
