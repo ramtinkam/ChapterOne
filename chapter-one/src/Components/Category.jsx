@@ -11,7 +11,7 @@ import historical from './historical.png';
 function Category() {
     
 
-
+    //Handle different buttons for different genres of books
     const [histButton,setHistButton] = useState(false);
 
     function handleHisClick() {

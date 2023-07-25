@@ -14,6 +14,7 @@ import {Rating} from 'react-simple-star-rating'
 
 
 function Book(props) {
+    // Getting the information needed for the page
     const params = useParams();
     const [favBooks,setFavBooks] = useState([]);
     const [defaultRating,setDefaultRating] = useState(0);
@@ -33,6 +34,7 @@ function Book(props) {
     //const [state, updateState] = React.useState();
     //const forceUpdate = React.useCallback(() => updateState({}), []);
 
+    // Adding the book to the list user wants
     function popupFunc(){
         let flg =false
         favBooks.forEach(e => {
@@ -125,6 +127,7 @@ function Book(props) {
             ).then((res)=>{console.log(res)})
     }
 
+    // Handle comment section
     const [comment,setComment] = useState('');
     function addComment(){
         if (comment === ''){
@@ -160,9 +163,12 @@ function Book(props) {
 
   return (
     <div className='book-main-container'>
+        {/* The navbar of the page */}
         <div className="book-navbar-div">
             <Navbar />
         </div>
+
+        {/* The information of the book */}
         <div className="book-info-div">
             <img className="book-page-img" src={bookInfo.image} alt="the-book-image" />
             <div className="book-middle-div">
@@ -212,6 +218,7 @@ function Book(props) {
                 
             </div>
 
+            {/* Adding the book to the profile and in different lists */}
             <div className="book-page-add-comment-div">
                 <Popup closeByBackdropClick={true} 
                 trigger={<button className='book-page-add-book'>می‌خواهم بخوانم</button>}modal nested>
@@ -228,6 +235,8 @@ function Book(props) {
                     <option value="reading">در حال مطالعه</option>
                     <option value="read">خوانده شده</option>
                 </select> */}
+
+                {/* The comment section for the book */}
                 <div className="book-comment">
                     {/* <input type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" /> */}
                     <textarea type="text" placeholder='...دید‌گاه خود را وارد کنید' className="book-add-comment" value={comment}
@@ -255,6 +264,7 @@ function Book(props) {
             <p className="book-page-description">{bookInfo.description}</p>
         </div>
 
+        {/* Other comments for the book */}
         <div className="book-page-comment-section-div">
             <h className="book-page-comment-header">:دیدگاه‌ها</h>
             {commentArray.map((e)=>{return(

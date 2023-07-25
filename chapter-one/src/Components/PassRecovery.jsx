@@ -7,6 +7,7 @@ import Axios from "axios";
 
 
 function PassRecovery() {
+    // Handle the code sent for password recovery
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 

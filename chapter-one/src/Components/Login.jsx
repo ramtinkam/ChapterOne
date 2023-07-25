@@ -5,6 +5,7 @@ import Axios from "axios";
 
 function Login() {
 
+    // Handle the log in of the user who has registered before
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

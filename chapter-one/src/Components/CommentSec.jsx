@@ -5,6 +5,7 @@ import StarRating from './StarRating';
 
 function CommentSec(props) {
   return (
+    // A div for the comments different users add
     <div className='comment-main-container'>
         <div className="comment-user-info">
             <img className="comment-user-profile-pic" src={props.profileImg} alt="" />
