@@ -155,7 +155,7 @@ function Profile() {
                 if(e.status==="خوانده شده"){
                 return(
                     <BookCard key={index}
-                image={'https://'+e.image.slice(16)}
+                image={'http://api.chapterone.kveh.ir'+e.image}
                 avgRate ={e.average_rating}
                 bookName={e.name}
                 authorName={" "+e.authors[0].full_name}
@@ -176,7 +176,7 @@ function Profile() {
                 if(e.status==="درحال خواندن"){
                 return(
                     <BookCard key={index}
-                image={'https://'+e.image.slice(16)}
+                image={'http://api.chapterone.kveh.ir'+e.image}
                 avgRate ={e.average_rating}
                 bookName={e.name}
                 authorName={" "+e.authors[0].full_name}
