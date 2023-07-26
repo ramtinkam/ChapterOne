@@ -4,6 +4,7 @@ import classes from './Button.css';
 
 const Button = (props) => {
     return(
+        // A special button used in different parts of website
         <button 
         type={props.type || "button"}
         className={`${classes.button} ${props.className}`}

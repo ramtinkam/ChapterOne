@@ -11,6 +11,7 @@ import Axios from "axios";
 
 
 function GenrePage() {
+    // Handle search for different books and genre
     const [searchValue, setSearchValue] = useState(sessionStorage.getItem('searchValue'));
     const [searchResult,setSearchResult] = useState([]);
     const [book,setBook] = useState([]);
@@ -70,6 +71,7 @@ function GenrePage() {
         
     }
 
+    // Handle the order of the books
     function handleSortbyName(){
         searchResult.sort((a, b) => {
             let fa = a.name.toLowerCase(),

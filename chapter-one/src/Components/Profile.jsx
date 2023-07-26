@@ -14,9 +14,8 @@ import Popup from 'reactjs-popup';
 import Axios from "axios";
 
 
-
-
 function Profile() {
+    // Handle user info such as name, profile image, favorite books and other lists
     const [profileInfo,setProfileInfo]=useState({});
     const [favBooks,setFavBooks] = useState([]);
     function logOut(){

@@ -4,6 +4,7 @@ import profileImg from './rezajamshidi.jpg';
 
 function Follow() {
   return (
+    //A list of followers and followings of the user
     <div className='follow-page-main-div'>
         <div className="follow-info-div">
             <img src={profileImg} alt="" className="follow-profile-img" />

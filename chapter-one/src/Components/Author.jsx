@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import Axios from "axios";
 
 function Author(props) {
+    // Getting the information needed for the page
     const {id, bookId} = useParams();
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -38,6 +39,8 @@ function Author(props) {
         console.log(err);}
         )
     }
+
+    // Catch the books sorted by their names
     function handleSortbyName(){
         authorBooks.sort((a, b) => {
             let fa = a.name.toLowerCase(),
@@ -54,6 +57,8 @@ function Author(props) {
         
         
     }
+
+    // Catch the books sorted by their rates
     function handleSortbyRating(){
         authorBooks.sort((a, b) => {
             let fa = a.average_rating,
@@ -68,6 +73,8 @@ function Author(props) {
             return 0;
         })
     }
+
+    // Catch the books sorted by their publishing date
     function handleSortbyDate(){
         authorBooks.sort((a, b) => {
             let fa = a.release_date,
@@ -108,7 +115,10 @@ function Author(props) {
 
   return (
     <div className='main-author-container'>
+        {/* Having the navbar of the page */}
         <Navbar />
+
+        {/* Having the div that consists of author main informations such as image, name, biography */}
         <div className="author-div">
             <div className="author-main-info-div">
                 <img className="author-img" src={'media/'+authorInfo.image} alt="author-image" />
@@ -121,8 +131,9 @@ function Author(props) {
                 </div>
                 </div>
             </div>
-
         </div>
+
+        {/* Having the div that consists of author's books with different orders */}
         <div className="author-books">
             <div className="author-books-container">
                 <p className="author-sortby">مرتب سازی بر اساس</p>
@@ -135,6 +146,8 @@ function Author(props) {
                 </select>
                 <h className="author-books-div-name">آثار نویسنده</h>  
             </div>
+
+            {/* Mapping through author's books and creating the BookCard component for them */}
             <div className="author-books-div">
             {authorBooks.map((e, index)=>{//console.log(e);
                 return(
@@ -149,8 +162,9 @@ function Author(props) {
                 );
             })}
             </div>
-            
         </div>
+
+        {/* The footer of the page */}
         <Footer />
     </div>
   )

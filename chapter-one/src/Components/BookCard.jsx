@@ -28,6 +28,7 @@ function BookCard(props) {
             )
         }}
 
+        //Catch favorite books
     function getFavBooks(){
         Axios.get(`api/socialmedia/get-favorite-books/${sessionStorage.getItem('userId')}`,
         {headers: {Authorization : "Token "+ sessionStorage.getItem('token')}}).then(
@@ -71,6 +72,8 @@ function BookCard(props) {
 
   return (
     <div className='book-card' >
+
+        {/* Get the rate of the book */}
         <Rating
                 initialValue={props.avgRate}
                 readonly={true}
@@ -80,6 +83,8 @@ function BookCard(props) {
                 emptyColor='gray'
                 className='foo' // Will remove the inline style if applied
                 />
+
+                {/* Get the information of the book such as name, author name... */}
         <div className='book-card-top'>
          
             <div className="book-card-img-container">

@@ -5,6 +5,7 @@ import Axios from "axios";
 
 
 const SignUp = () => {
+    // Handle the new information for registration
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

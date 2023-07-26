@@ -4,6 +4,8 @@ import forgotPic from './forgor.png'
 import Axios from "axios";
 
 export const ForgotPassword = () => {
+
+    //Handle the password forgotten by the user
     const [email, setEmail] = useState('');
 
     const handleEmail = (e) => {
@@ -31,6 +33,7 @@ export const ForgotPassword = () => {
 
 
     return (
+        // Asking for the email the user registered with
         <div className='forgot-passowrd-container'>
             <div className='forgot-password-form-container'>
                 <a href='/login' className='forgot-password-return-button'>

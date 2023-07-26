@@ -4,6 +4,8 @@ import  Axios  from 'axios';
 
 
 function StarRating(props) {
+
+  // Handle rating stars 
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
 
